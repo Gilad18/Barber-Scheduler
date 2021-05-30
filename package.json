@@ -1,0 +1,32 @@
+{
+  "name": "barber",
+  "version": "1.0.0",
+  "description": "slots schedulers",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "cd barber && npm install",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix barber",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix barber && npm run build --prefix barber"
+  },
+  "author": "Gilad Yefet",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "concurrently": "^6.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.5",
+    "validator": "^13.6.0",
+    "react-router-dom": "^5.2.0",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

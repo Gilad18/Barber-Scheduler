@@ -1,0 +1,50 @@
+.confirmSlot {
+    background-image: url('../../media/gear2.jpg');
+    background-position:center ;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.confirmSlot .currentHeader h3 {
+    text-align: right;
+    color: #C3941D ;
+    padding-right: 5%;
+ }
+
+.confirmSlot .currentBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slotDetails {
+    width: 90%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: black;
+    opacity: 0.6;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    /* visibility: hidden; */
+}
+
+.succes {
+    opacity: 0.8;
+}
+
+.confirmSlot .currentfooter button {
+    width: 50%;
+    height: 4rem;
+    background-color: #C3941D !important;
+    color: black !important;
+    font-size: large;
+    margin-top: 5%;
+}
+
+.confirmSlot .currentfooter h2 {
+    margin-top: 10%;
+}

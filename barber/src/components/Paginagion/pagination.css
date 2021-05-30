@@ -1,0 +1,31 @@
+.paginagiom{
+    width: 100vw;
+    height: 10vh;
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dot{
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-color:  #5a5a5a;
+    text-align: center;
+    font-weight: bold;
+    color: #C3941D;
+}
+
+.line {
+    width: 8rem;
+    height: 0.5rem;
+    background-color: #5a5a5a;
+}
+
+.activeP {
+    background-color: #C3941D;
+    border: #C3941D 1px solid;
+    color: #5a5a5a;
+}

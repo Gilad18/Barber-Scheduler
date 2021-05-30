@@ -1,0 +1,170 @@
+
+.App .menu {
+    width: 100vw;
+   justify-content: space-evenly;
+   background: black !important;
+   padding: 1%;
+   margin: 0 !important;
+}
+
+.App .menu .active {
+    background:#C3941D  !important;
+}
+.App .menu .item {
+  color: white !important;
+}
+
+.App .segment {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+.adminPage {
+    width: 100vw;
+    background-color: black;
+    margin: auto;
+    color: white;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.adminPage h2 {
+   text-align: center;
+
+}
+
+.headingMessgaeSchedule {
+    color:  honeydew;
+    margin-left: 0.5rem;
+}
+
+.slotHour{
+    width: 90vw;
+    min-height: 4vh;
+    background-color: transparent;
+    border: 1px solid #C3941D;
+    padding: 2%;
+    margin: 1rem auto;
+    border-radius: 15px;
+    font-size: large;
+
+}
+
+.reserved {
+    background-color: #C3941D;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modalSlot {
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    position: fixed;
+    top: 0;
+}
+
+.closeMidalBTN {
+    float: right;
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 5%;
+    font-size: x-large;
+}
+
+.modalBody {
+    width: 100vw;
+    height: 70vh;
+    margin-top: 8vh;
+    padding: 2%;
+    margin: 8vh auto;
+}
+
+.ModalDateAndHour {
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+
+.ModalClientInfo {
+    width: 100vw;
+    height: 30vh;
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ModalClientInfo input {
+    height: 20%;
+    margin-bottom: 10%;
+    font-size: large;
+    padding: 3%;
+}
+
+.modalTypeSelcet {
+    width: 100vw;
+    height: 30vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 5%;
+    padding: 5%;
+    margin-top: -5%;
+    margin-bottom: 10%;
+}
+.thretmentTypeItem {
+    border: 1px solid white;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+}
+
+.selectedType {
+    opacity: 1;
+    border: 5px solid #C3941D;
+}
+
+.modalBody button {
+    width: 100%;
+    height: 4rem;
+    background-color: #C3941D !important;
+    color: black !important;
+    font-size: x-large !important;
+}
+
+.successMessage {
+    color: #C3941D;
+    text-align: center;
+}
+
+.closeDaySec {
+    width: 100vw;
+    height: 10vh;
+    background-color: gray;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1%;
+}
+.closeDaySec button {
+    background-color: transparent !important;
+    border: 1px black solid !important;
+    background-color: #C3941D !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 90%;
+}

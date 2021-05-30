@@ -1,0 +1,51 @@
+.App {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: black;
+}
+
+.currentPage {
+   width: 100vw;
+   height: 100vh;
+  
+}
+
+.currentHeader {
+  width: 100vw;
+  height: 10vh;
+}
+
+.currentHeader h3 {
+  width: 100%;
+  text-align: left;
+  position: relative;
+  top: 7vh;
+  left: 1vh;
+  color: #C3941D;
+}
+
+.currentBody {
+  width: 100vw;
+  height: 70vh;
+  display: flex;
+
+}
+
+.currentfooter {
+  width: 100vw;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input:focus {
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+}
+

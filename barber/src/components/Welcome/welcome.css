@@ -1,0 +1,41 @@
+.header {
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    padding: 5%;
+}
+
+.header i {
+    color: white !important;
+}
+
+.welcome {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../../media/beard.jpg');
+    background-position:center ;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.logoDiv {
+    width: 60vw;
+    height: 30vh;
+    background-color: transparent;
+    background-image: url('../../media/lgoo1212.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: auto;
+    position: relative;
+    bottom: 25vh;
+}
+
+
+.welcome .currentfooter button {
+    width: 70%;
+    height: 4rem;
+    background-color: #C3941D !important;
+    color: black !important;
+    font-size: large;
+}
