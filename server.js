@@ -27,7 +27,7 @@ mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cl
 
 if (process.env.NODE_ENV === 'production') {
     // Exprees will serve up production assets
-    app.use(express.static('client/build'));
+    app.use(express.static('barber/build'));
     // Express serve up index.html file if it doesn't recognize route
   
     const path = require('path');
