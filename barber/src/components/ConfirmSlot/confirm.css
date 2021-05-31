@@ -1,5 +1,7 @@
 .confirmSlot {
-    background-image: url('../../media/gear3bw.jpg'); 
+    background-image: url('../../media/artist1212.jpg'); 
+    background-position: center;
+    background-size: cover;
    background-repeat: no-repeat;
 
 }
@@ -14,13 +16,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 10;
 }
 
 .slotDetails {
     width: 100vw;
     height: 100vh;
     border-radius: 5px;
-  
     color: white;
     display: flex;
     align-items: center;
@@ -28,14 +30,12 @@
 }
 
 .confirmCard{
-    width: 90%;
-    height: 30%;
-    /* border: 2px solid white;
-    border-radius: 15px; */
+    width: 100%;
+     opacity: 0.9;
     text-align: center;
-    margin-bottom: 15%;
+    margin-top: 37%;
 }
-.confirmCardDates {
+.confirmDates {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
@@ -43,6 +43,10 @@
     text-align: center;
     margin: 0;
     padding: 0;
+}
+
+.confirmDates h2 , .confirmDates h3{
+    margin: 0;
 }
 
 .succes {

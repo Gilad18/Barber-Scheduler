@@ -62,11 +62,17 @@ const ConfirmSlot = () => {
                 <div className={`slotDetails ${succes ? 'succes' : ''}`}>
                     <div className="confirmCard">
                         <h1>{mySlot.slot.details.name}</h1>
-                        <h1>Tuesday</h1>
+                        
+                        {/* <div className="confirmDates"> */}
                         <h2>{mySlot.slot.date.date}</h2>
                         <h2>{mySlot.slot.date.hour}</h2>
-                        <h3 style={{textAlign:'left'}}>{mySlot.slot.threat}</h3>
-                        <h3 style={{textAlign:'left'}} >{mySlot.slot.price} ILS</h3>
+                        {/* </div> */}
+                        <h1>Tuesday</h1>
+                        {/* <div className="confirmDates"> */}
+                        <h3 >{mySlot.slot.threat}</h3>
+                        <h3 >{mySlot.slot.price} ILS</h3>
+                        {/* </div> */}
+                        
                     </div>
                 </div>
             </div>
