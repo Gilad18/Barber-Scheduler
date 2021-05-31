@@ -17,3 +17,10 @@ export const theTypes = [
     { name: 'Dye Only', price: 120 },
     { name: 'Full Treatment', price: 185 }
 ]
+
+export const adminActios = [
+    {name : 'This Week Schedule', page:'/admin/week'},
+    {name : 'Next Week Schedule', page:'/admin/week'},
+    {name : 'Custom Date', page:'/admin/customdate'},
+    {name : 'Manage Days Off', page:'/admin/mangedaysoff'}
+]

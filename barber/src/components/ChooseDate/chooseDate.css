@@ -13,14 +13,54 @@
     width: 90%;
     margin: 4% auto;
 }
-.react-calendar__month-view__weekdays {
+.react-calendar {
+    background-color: black;
     color: white;
+    border: none;
+}
+.react-calendar__navigation button {
+    color: white;
+   border-top: 1px solid white;
+}
+/* .react-calendar__month-view__weekdays {
+    color: grey;
     text-align: center;
     margin-top: 1rem;
+} */
+ .react-calendar__month-view__weekdays {
+    color: white;
+    border-bottom: 1px solid white;
+    font-size: small;
+}
+
+.react-calendar__month-view__weekdays abbr {
+    text-decoration: none !important;
+}
+
+
+
+.react-calendar__month-view__days__day {
+    color: #C3941D;
+    /* background-color: white; */
+    /* color: black; */
+}
+
+.react-calendar button:disabled {
+    background-color: transparent !important;
+} 
+.react-calendar__tile:disabled {
+    background-color: transparent;
+    color: grey;
+  }
+
+.react-calendar__tile--active {
+    background-color: #C3941D !important;
+    color: black;
 }
 
 .react-calendar__month-view__days {
-    height: 16rem;
+
+    color: white;
 }
 
 .chooseDate .currentHeader h3 {
@@ -30,7 +70,7 @@
 
  .avaiabily {
      width: 100%;
-     height: 12rem;
+     height: 10rem;
      display: grid;
      grid-template-columns : repeat(auto-fill, minmax(4rem, 1fr));
      grid-gap: 6%;

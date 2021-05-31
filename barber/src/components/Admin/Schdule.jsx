@@ -56,7 +56,7 @@ export default function Scheudle({ givenDate }) {
             setSelfBookClose(true)
         }
         isClosedForBooking()
-    }, [givenDate])
+    }, [])
 
 
     const handleSlotClick = (item,e) => {

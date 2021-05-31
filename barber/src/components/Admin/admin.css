@@ -168,3 +168,16 @@
     align-items: center !important;
     width: 90%;
 }
+
+.backToMenu{
+  border: none;
+  color: black;
+  font-size: large;
+  background-color: white;
+  z-index: 50;
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  right: 0%;
+  top: 0%;
+}

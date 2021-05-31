@@ -4,7 +4,7 @@ import './confirm.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { disable } from '../../features/actions'
-import {DATABASE} from '../utility'
+import { DATABASE } from '../utility'
 
 const ConfirmSlot = () => {
 
@@ -52,25 +52,29 @@ const ConfirmSlot = () => {
         <div className="currentPage confirmSlot">
             <div className="currentHeader">
                 {
-                    !succes && <h3>{`Review & Confirm`}</h3>
+                    succes ?
+                    <h2 className="succcesMsgConfirm">Reservation is booked! </h2>
+                    :
+                    <h3>{`Review & Confirm`}</h3>
                 }
             </div>
             <div className="currentBody">
                 <div className={`slotDetails ${succes ? 'succes' : ''}`}>
-                    <h1>{mySlot.slot.details.name}</h1>
-                    <h1>Tuesday</h1>
-                    <h2>{mySlot.slot.date.date}</h2>
-                    <h2>{mySlot.slot.date.hour}</h2>
-                    <h3>{mySlot.slot.threat}</h3>
-                    <h3>{mySlot.slot.price} ILS</h3>
+                    <div className="confirmCard">
+                        <h1>{mySlot.slot.details.name}</h1>
+                        <h1>Tuesday</h1>
+                        <h2>{mySlot.slot.date.date}</h2>
+                        <h2>{mySlot.slot.date.hour}</h2>
+                        <h3 style={{textAlign:'left'}}>{mySlot.slot.threat}</h3>
+                        <h3 style={{textAlign:'left'}} >{mySlot.slot.price} ILS</h3>
+                    </div>
                 </div>
             </div>
             <div className="currentfooter">
                 {
-                    succes ?
-                        <h2 style={{ color: '#C3941D ' }}>Reservation is booked! </h2>
-                        :
-                        <React.Fragment>                    <button className={`ui primary button ${loading ? 'loading' : ''}`}
+                    !succes &&
+                        <React.Fragment>        
+                             <button className={`ui primary button ${loading ? 'loading' : ''}`}
                             onClick={handleConfirm} >CONFIRM</button>
                             <p style={{ color: 'red' }}>{erroeMessage}</p>
                         </React.Fragment>

@@ -51,7 +51,7 @@ const handleSetNumber = (e) => {
             }));
     
           return  setTimeout(() => {
-                history.push('/when')
+                history.push('/user/when/2')
                 dispatch(nextPage())
             }, 300);
         }

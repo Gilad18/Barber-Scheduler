@@ -1,5 +1,9 @@
-const { findByIdAndUpdate } = require('../models/slots.model')
 const slots = require('../models/slots.model')
+const utility = require('./utility')
+const daysoff = require('../models/daysOff.model')
+var moment = require('moment')
+moment().format();
+
 
 const createNewSlot = async (req,res) => {
     const {name ,phone, threat , price , date, hour} = req.body                    //how to catch if scheduled is not unique!
@@ -14,9 +18,14 @@ const createNewSlot = async (req,res) => {
         scheduled : date+hour
     })
 
-    
         await newSlot.save()
-        res.status(200).json({succes: 'Your slot is booked succesfully!' , newSlot})
+        const bookedSlots = await slots.find({date: date},{hour:1})
+        if(bookedSlots.length === utility.avaiabilty.length) {
+            const theday = moment(date).format('DD-MM-YYYY')
+            await daysoff.updateOne({ $push: { fullyBooked: theday } })
+
+        }
+        res.status(200).json({succes: 'Your slot is booked succesfully!' , newSlot })
     }
     catch(error){
         res.status(400).json({error})

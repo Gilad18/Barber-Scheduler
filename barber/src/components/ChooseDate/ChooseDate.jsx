@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import moment from 'moment';
 import axios from 'axios'
 import { avaiabilty, closingHoursFriday , DATABASE } from '../utility'
@@ -13,12 +14,10 @@ const ChooseDate = () => {
 
     const history = useHistory()
     const dispatch = useDispatch()
-    // const state = useSelector(state => state.slot)
 
     let offDays = []
 
     const getmyDaysOff = async () => {           //is there a better way? it renderss each click
-        console.log('invoked')
         if (localStorage.getItem('daysoff') === null) {
             const daysOffForBookings = await axios.get(
                 `${DATABASE}/daysoff/fullybooked`
@@ -28,7 +27,6 @@ const ChooseDate = () => {
                     daysOffForBookings.data.mydaysOff[0].fullyBooked,
                     daysOffForBookings.data.mydaysOff[0].closedForBooking
                 )
-            console.log('calledAPI')
             localStorage.setItem('daysoff', noBookingDays)
         }
 
@@ -54,7 +52,7 @@ const ChooseDate = () => {
             }));
 
             return setTimeout(() => {
-                history.push('/confirm')
+                history.push('/user/confirm/3')
                 dispatch(nextPage())
                 localStorage.removeItem('daysoff')
             }, 300);
@@ -107,6 +105,7 @@ const ChooseDate = () => {
                     tileDisabled={({ date }) => offDays.includes(moment(date).format('DD-MM-YYYY'))
                         || date.getDay() === 1 || date.getDay() === 6}
                     onClickDay={(e) => handlePickedDay(e)}
+                    minDate={new Date()}
                 />
                 {
                     hourPop && <React.Fragment>

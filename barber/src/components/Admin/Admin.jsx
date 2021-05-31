@@ -3,6 +3,7 @@ import { Tab } from 'semantic-ui-react'
 import Schedule from './Schdule'
 import Weekly from './weekly/Weekly'
 import moment from 'moment'
+import Button from './backToMenuButton/BackButton'
 import './admin.css'
 
 const now = new Date()
@@ -33,7 +34,10 @@ const panes = [
 ]
 
 const TabExampleSecondary = () => (
+  <React.Fragment>
+  <Button/>
   <Tab menu={{ secondary: true }} panes={panes} />
+  </React.Fragment>
 )
 
 export default TabExampleSecondary

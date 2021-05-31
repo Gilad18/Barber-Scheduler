@@ -1,0 +1,40 @@
+.dashboardSec{
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.dashboardSec .logoDiv {
+    bottom: 0;
+}
+.adminActions {
+    width: 100vw;
+    height: 70vh;
+    /* background: yellow; */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.adminActionItem {
+    width: 80%;
+    height: 15%;
+    border-radius: 15px;
+    border :2px solid white;
+    background-color:#C3941D ;
+    color: black;
+    margin: 2% auto;
+    font-size: x-large;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

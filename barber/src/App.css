@@ -23,6 +23,7 @@
   top: 7vh;
   left: 1vh;
   color: #C3941D;
+  z-index: 20;
 }
 
 .currentBody {
@@ -37,7 +38,7 @@
   height: 20vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content:flex-start ;
   align-items: center;
 }
 
