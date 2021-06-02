@@ -35,7 +35,7 @@
 .welcome .currentfooter button {
     width: 70%;
     height: 4rem;
-    background-color: #C3941D !important;
+    background-color: var(--unique) !important;
     color: black !important;
     font-size: large;
 }

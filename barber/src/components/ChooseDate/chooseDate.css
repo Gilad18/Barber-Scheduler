@@ -40,7 +40,7 @@
 
 
 .react-calendar__month-view__days__day {
-    color: #C3941D;
+    color: var(--unique);
     /* background-color: white; */
     /* color: black; */
 }
@@ -50,11 +50,11 @@
 } 
 .react-calendar__tile:disabled {
     background-color: transparent;
-    color: grey;
+    color:var(--assist);
   }
 
 .react-calendar__tile--active {
-    background-color: #C3941D !important;
+    background-color: var(--unique) !important;
     color: black;
 }
 
@@ -65,7 +65,7 @@
 
 .chooseDate .currentHeader h3 {
     text-align: center;
-    color: #C3941D ;
+    color: var(--unique) ;
  }
 
  .avaiabily {
@@ -79,8 +79,8 @@
  }
  .hourPick {
      background: transparent;
-     border: 1px solid #C3941D;
-     color: #C3941D;
+     border: 1px solid var(--unique);
+     color: var(--unique);
      padding: 1%;
      display: flex;
      justify-content: center;
@@ -88,7 +88,7 @@
  }
 
  .thePickedHour {
-     background-color:#C3941D ;
+     background-color:var(--unique) ;
      color: black;
  }
 
@@ -110,13 +110,13 @@ input {
 
 input:focus {
     opacity: 0.9;
-    border-color:#C3941D ;
+    border-color:var(--unique);
 }
 
 .chooseDate .currentfooter button {
     width: 50%;
     height: 4rem;
-    background-color: #C3941D !important;
+    background-color: var(--unique) !important;
     color: black !important;
     font-size: large;
     margin-bottom: 8%;

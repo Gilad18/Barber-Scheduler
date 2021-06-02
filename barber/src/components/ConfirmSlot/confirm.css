@@ -8,7 +8,7 @@
 
 .confirmSlot .currentHeader h3 {
     text-align: right;
-    color: #C3941D ;
+    color: var(--unique);
     padding-right: 5%;
  }
 
@@ -56,7 +56,7 @@
 .confirmSlot .currentfooter button {
     width: 50%;
     height: 4rem;
-    background-color: #C3941D !important;
+    background-color: var(--unique)!important;
     color: black !important;
     font-size: large;
     margin-top: 5%;
@@ -68,7 +68,7 @@
 }
 
 .succcesMsgConfirm {
-    color: #C3941D;
+    color: var(--unique);
     position: relative;
     top: 4rem;
     text-align: center;

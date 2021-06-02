@@ -22,7 +22,7 @@
   position: relative;
   top: 7vh;
   left: 1vh;
-  color: #C3941D;
+  color: var(--unique);
   z-index: 20;
 }
 

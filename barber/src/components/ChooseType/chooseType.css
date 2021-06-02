@@ -34,7 +34,7 @@
 
 .selectedType {
     opacity: 1;
-    border: 5px solid #C3941D;
+    border: 5px solid var(--unique);
 }
 
 .secondBody {
@@ -74,12 +74,12 @@ input , label {
 
 input:focus {
     opacity: 1;
-    border-color:#C3941D ;
+    border-color:var(--unique) ;
 }
 .chooseType .currentfooter button {
     width: 50%;
     height: 4rem;
-    background-color: #C3941D !important;
+    background-color: var(--unique) !important;
     color: black !important;
     font-size: large;
 }

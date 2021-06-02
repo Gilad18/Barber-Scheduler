@@ -13,20 +13,20 @@
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
-    background-color:  #5a5a5a;
+    background-color:  var(--assist);
     text-align: center;
     font-weight: bold;
-    color: #C3941D;
+    color: var(--unique);
 }
 
 .line {
     width: 8rem;
     height: 0.5rem;
-    background-color: #5a5a5a;
+    background-color: var(--assist);
 }
 
 .activeP {
-    background-color: #C3941D;
-    border: #C3941D 1px solid;
-    color: #5a5a5a;
+    background-color: var(--unique);
+    border: var(--unique) 1px solid;
+    color: var(--assist);
 }
