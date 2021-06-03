@@ -6,24 +6,21 @@
     padding: 5%;
 }
 
-.header i {
-    color: white !important;
-}
+ .header i {
+    color: var(--text) !important;
+} 
 
 .welcome {
     width: 100vw;
     height: 100vh;
-    background-image: url('../../media/beard.jpg');
-    background-position:center ;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: url('../../media/showcase.jpg') no-repeat center center / cover;
 }
 
 .logoDiv {
     width: 60vw;
     height: 30vh;
     background-color: transparent;
-    background-image: url('../../media/lgoo1212.png');
+    background-image: url('../../media/lgoo.png');
     background-size: cover;
     background-repeat: no-repeat;
     margin: auto;

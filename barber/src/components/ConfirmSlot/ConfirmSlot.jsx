@@ -4,7 +4,7 @@ import './confirm.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { disable } from '../../features/actions'
-import { DATABASE } from '../utility'
+import { DATABASE , daysOfTheWeek } from '../utility'
 
 const ConfirmSlot = () => {
 
@@ -14,6 +14,8 @@ const ConfirmSlot = () => {
     const [succes, setSucces] = useState(false)
     const [loading, setLoading] = useState(false)
     const [erroeMessage, setError] = useState('')
+
+    let theDate = new Date(mySlot.slot.date.date)
 
     const handleConfirm = async () => {
         setLoading(true)
@@ -59,20 +61,25 @@ const ConfirmSlot = () => {
                 }
             </div>
             <div className="currentBody">
-                <div className={`slotDetails ${succes ? 'succes' : ''}`}>
+                <div className="slotDetails">
                     <div className="confirmCard">
+                        <div className="confirmItemName">
                         <h1>{mySlot.slot.details.name}</h1>
+                        </div>
+                        <div className="confirmItemDate">
+                        <h2>{daysOfTheWeek[theDate.getDay()]}</h2>
+                        </div>
+                        <div className="confirmItemDay">
                         
-                        {/* <div className="confirmDates"> */}
                         <h2>{mySlot.slot.date.date}</h2>
+                        </div>
+                        <div className="confirmItemHour">
                         <h2>{mySlot.slot.date.hour}</h2>
-                        {/* </div> */}
-                        <h1>Tuesday</h1>
-                        {/* <div className="confirmDates"> */}
+                        </div>
+                        <div className="confirmItemTreat">
                         <h3 >{mySlot.slot.threat}</h3>
                         <h3 >{mySlot.slot.price} ILS</h3>
-                        {/* </div> */}
-                        
+                        </div>
                     </div>
                 </div>
             </div>

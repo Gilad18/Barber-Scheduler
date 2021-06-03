@@ -1,8 +1,5 @@
 .chooseType {
-    background-image: url('../../media/hair2bw.jpg');
-    background-position:center ;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: url('../../media/hair2bw.jpg') no-repeat center center / cover;
 }
 
 .chooseType .currentBody {
@@ -30,6 +27,7 @@
     background-color: black;
     border: 2px solid white;
     opacity: 0.8;
+    padding: 5%;
 }
 
 .selectedType {
@@ -53,11 +51,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+
+.inputDiv i {
+    position: absolute;
+    right: 6%;
+    color: var(--unique);
 }
 input , label {
-    width: 90vw;
+    width: 90%;
     color: white;
-    /* color :#C3941D; */
     font-size: large;
     text-align: left;
     font-weight: bolder;

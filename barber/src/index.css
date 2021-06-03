@@ -1,3 +1,11 @@
+:root {
+  --back: black;
+  --text: white;
+  --unique :#daae50 ;
+  --assist : rgb(94, 94, 94);
+}
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -7,6 +15,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
   box-sizing: border-box;
+  background-color: var(--back);
+  color: var(--text);
 }
 
 code {
@@ -14,9 +24,3 @@ code {
     monospace;
 }
 
-:root {
-  --back: black;
-  --text: white;
-  --unique :#df9b36 ;
-  --assist : rgb(94, 94, 94);
-}

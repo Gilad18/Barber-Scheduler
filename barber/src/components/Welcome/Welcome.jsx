@@ -41,7 +41,7 @@ const Welcome = () => {
             </div>
             <div className="currentfooter">
                 <button onClick={handleClick}
-                    className="ui primary button">Book Your Appointment</button>
+                    className="ui primary button ">Book Your Appointment</button>
             </div>
         </div>
     )
