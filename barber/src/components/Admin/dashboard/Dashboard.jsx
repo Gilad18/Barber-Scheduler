@@ -15,7 +15,7 @@ export default function Dashboard() {
         <div className="dashboardSec">
            
            <div className="logoDiv"></div>
-           <h2>Welcome ,Admin</h2>
+           <h2>Welcome Admin</h2>
            <div className="adminActions">
                {adminActios.map((item,index) => {
                     return <div className="adminActionItem"

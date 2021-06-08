@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Tab } from 'semantic-ui-react'
 import Schedule from './Schdule'
 import Weekly from './weekly/Weekly'
 import moment from 'moment'
 import Button from './backToMenuButton/BackButton'
 import './admin.css'
+
 
 const now = new Date()
 const today = moment(now).format('LL')
@@ -26,9 +27,9 @@ const panes = [
       </Tab.Pane>,
   },
   {
-    menuItem: 'WEEKLY',
+    menuItem: 'Next 7 Days',
     render: () => <Tab.Pane attached={false}>
-       <Weekly givenDate={today} />
+       <Weekly/>
       </Tab.Pane>,
   },
 ]

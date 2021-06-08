@@ -35,6 +35,13 @@ router.post('/newslot' , (req,res) => {
 .put('/updateSlotbyID' , (req,res) => {
     slotControllers.updateSlot(req,res)
 })
+.get('/getnextsevendays' , (req,res) => {
+    slotControllers.getNext7Days(req,res)
+})
+.post('/daysoff/setvacationdates' , (req,res) => {
+    console.log('here')
+    daysOffControllers.setVacationDates(req,res)
+})
 
 
 module.exports = router;

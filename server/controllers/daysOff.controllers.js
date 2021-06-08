@@ -1,19 +1,6 @@
 const daysOff = require('../models/daysOff.model')
+const slots = require('../models/slots.model')
 
-const createDaysOff = async (req, res) => {         //just for creation, can be ignore, lter delete
-    try {
-        const newTable = new daysOff({
-            holidays: ['18-05-2021', '25-05-2021'],
-            fullyBooked: ['01-06-2021', '03-06-2021']
-        })
-
-        await newTable.save()
-        res.status.json({ success: 'new table created' })
-    }
-    catch (error) {
-        res.status(400).json({ error })
-    }
-}
 
 const closeDayForBooking = async (req, res) => {
     const day = req.body.day
@@ -71,24 +58,32 @@ const setHolidays = async (req,res) => {
     res.status(400).json({ error })
   }
 }
- /*
 
-few options we need :
-
-1. check if a specific day is holiday/off/fully booked
-2. get all days that can't be booked
-3. undo a day from diabledForBooking
-
-
- */
-
+const setVacationDates = async (req, res) => {
+    const day = req.body.days
+    for(let i=0 ; i<day.length ; i++){
+        let exsitedSlots = await slots.find({date:day[i]})
+        if(exsitedSlots.length>0) {
+            return res.status(400).json(
+            {message : `You have a reserved slot on ${day[i]},
+             Make sure to cancel it before you set a vaction day`})
+        }
+    }
+    try {
+        await daysOff.updateOne({ $push: { vacation: day } })
+        res.status(200).json({ success: 'vacations dates updated succesffuly' })
+    }
+    catch (error) {
+        res.status(400).json({ error })
+    }
+}
 
 
 module.exports = {
-    createDaysOff,
     closeDayForBooking,
     getDaysOff,
     openDayForBooking,
     isClosedForBooking,
-    setHolidays
+    setHolidays,
+    setVacationDates
 }

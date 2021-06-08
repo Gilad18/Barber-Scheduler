@@ -7,6 +7,11 @@ export const avaiabilty = ['10:00', '10:30', '11:00', '11:30', '12:00', '12:30',
     '18:00', '18:30', '19:00', '19:30', '20:00', '20:30']
 
 
+ export const holidays = [
+     {date : 'June 5, 2021' , name: 'Sukot'}
+ ]   
+
+
 export const closingHoursFriday = ['16:00', '16:30', '17:00', '17:30',
     '18:00', '18:30', '19:00', '19:30', '20:00', '20:30']
 
@@ -21,8 +26,7 @@ export const theTypes = [
 ]
 
 export const adminActios = [
-    {name : 'This Week Schedule', page:'/admin/week'},
-    {name : 'Next Week Schedule', page:'/admin/week'},
+    {name : 'Upcoming Schedule', page:'/admin/week'},
     {name : 'Custom Date', page:'/admin/customdate'},
     {name : 'Manage Days Off', page:'/admin/mangedaysoff'}
 ]

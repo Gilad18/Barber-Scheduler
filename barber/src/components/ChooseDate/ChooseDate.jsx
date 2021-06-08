@@ -63,6 +63,7 @@ const ChooseDate = () => {
     const handlePickedDay = async (e) => {
         setLoadingHours(true)
         setPopHours(true)
+        console.log(e.toLocaleDateString('en-GB'))
         const theDate = moment(e).format('LL')
         try {
             const bookedHours = await axios({

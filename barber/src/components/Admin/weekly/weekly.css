@@ -1,17 +1,16 @@
 .weeklyPage {
     width: 100vw;
     height: 100vh;
-    background-color: black;
-    color: white; 
+    background-color: var(--back);
+    color: var(--text); 
 }
 
 
 
 .daysGrid {
     width: 80vw;
-    height: 60vh;
-
-    margin: auto;
+    height: 80%;
+    margin: 10% auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,7 +20,12 @@
 .daysGridSingleItem {
     width: 90%;
     height: 15%;
-    border: 2px solid #C3941D;
+    border: 2px solid var(--unique);
     border-radius: 15px;
-    padding: 5%;
+    /* padding: 5%; */
+    margin: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
 }

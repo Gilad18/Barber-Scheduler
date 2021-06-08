@@ -2,16 +2,16 @@
 .App .menu {
     width: 100vw;
    justify-content: space-evenly;
-   background: black !important;
+   background: var(--back) !important;
    padding: 1%;
    margin: 0 !important;
 }
 
 .App .menu .active {
-    background:#C3941D  !important;
+    background:var(--unique)  !important;
 }
 .App .menu .item {
-  color: white !important;
+  color: var(--text) !important;
 }
 
 .App .segment {
@@ -22,9 +22,9 @@
 
 .adminPage {
     width: 100vw;
-    background-color: black;
+    background-color: var(--back);
     margin: auto;
-    color: white;
+    color: var(--text);
     padding-top: 5%;
     padding-bottom: 5%;
 }
@@ -43,7 +43,7 @@
     width: 90vw;
     min-height: 4vh;
     background-color: transparent;
-    border: 1px solid #C3941D;
+    border: 1px solid var(--unique);
     padding: 2%;
     margin: 1rem auto;
     border-radius: 15px;
@@ -52,8 +52,8 @@
 }
 
 .reserved {
-    background-color: #C3941D;
-    color: black;
+    background-color: var(--unique);
+    color: var(--back);
     display: flex;
     justify-content: space-between;
 }
@@ -61,16 +61,16 @@
 .modalSlot {
     width: 100vw;
     height: 100vh;
-    background: black;
+    background: var(--back);
     position: fixed;
     top: 0;
 }
 
 .closeMidalBTN {
-    float: right;
+    float: left;
     border: none;
-    background-color: black;
-    color: white;
+    background-color: var(--back);
+    color: var(--text);
     padding: 5%;
     font-size: x-large;
 }
@@ -129,7 +129,7 @@
     margin-bottom: 10%;
 }
 .thretmentTypeItem {
-    border: 1px solid white;
+    border: 1px solid var(--text);
     border-radius: 15px;
     display: flex;
     justify-content: center;
@@ -139,19 +139,19 @@
 
 .modalTypeSelcet .selectedType {
     opacity: 1;
-    border: 5px solid #C3941D;
+    border: 5px solid var(--unique);
 }
 
 .modalBody button {
     width: 100%;
     height: 4rem;
-    background-color: #C3941D !important;
-    color: black !important;
+    background-color: var(--unique) !important;
+    color: var(--text) !important;
     font-size: x-large !important;
 }
 
 .successMessage {
-    color: #C3941D;
+    color: var(--unique);
     text-align: center;
 }
 
@@ -168,8 +168,8 @@
 }
 .closeDaySec button {
     background-color: transparent !important;
-    border: 1px black solid !important;
-    background-color: #C3941D !important;
+    border: 1px var(--back) solid !important;
+    background-color: var(--unique) !important;
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
@@ -178,13 +178,22 @@
 
 .backToMenu{
   border: none;
-  color: black;
+  color: var(--back);
   font-size: large;
-  background-color: white;
+  background-color: var(--text);
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
   z-index: 50;
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   position: absolute;
   right: 0%;
   top: 0%;
+}
+
+.segment .reply {
+    position: absolute;
+    left: 2%;
+    top: 1%;
+    color: var(--unique);
 }

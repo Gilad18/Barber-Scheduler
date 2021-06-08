@@ -8,14 +8,21 @@ const daysOffSchema = mongoose.Schema({
             unique: true
         }
     ],
-    fullyBooked : [
+    fullyBooked: [
         {
             type: String,
             required: false,
             unique: true
         }
     ],
-    closedForBooking : [
+    closedForBooking: [
+        {
+            type: String,
+            required: false,
+            unique: true
+        }
+    ],
+    vacation: [
         {
             type: String,
             required: false,
@@ -25,5 +32,5 @@ const daysOffSchema = mongoose.Schema({
 })
 
 
-const daysOffModel  = mongoose.model('daysOff',daysOffSchema);
-module.exports= daysOffModel;
+const daysOffModel = mongoose.model('daysOff', daysOffSchema);
+module.exports = daysOffModel;

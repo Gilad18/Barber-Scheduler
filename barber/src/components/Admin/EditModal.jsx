@@ -30,13 +30,11 @@ export default function EditModal({ modalContent, givenDate }) {
 
     return (
         <div className="modalBody">
-            here you can edit a a booked reservation 
             <h2>{givenDate}</h2>
-            <p>{modalContent.hour}</p>   
-            <p>{modalContent.name}</p> 
-            <p>{modalContent.price}</p>  
-            <p>{modalContent.date}</p>
-            <p>{modalContent.phone}</p>   
+            <h2>{modalContent.hour}</h2>   
+            <h4>{modalContent.name}</h4> 
+            <h4>{modalContent.threat}</h4>  
+            <h4>{modalContent.phone}</h4>   
             {
                 succes ?
                     <h3 className="successMessage">{message}</h3>

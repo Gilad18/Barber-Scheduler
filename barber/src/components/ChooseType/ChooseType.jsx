@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import './chooseType.css'
-import { theTypes } from '../utility'
+import { theTypes ,  } from '../utility'
 import { useDispatch, useSelector } from 'react-redux'
 import { addSlot, addDetials, nextPage } from '../../features/actions'
 const validator = require('validator');
@@ -15,6 +15,7 @@ const ChooseType = () => {
     const [phone, setNum] = useState('')
     const [phoneERR, setPhoneErr] = useState(false)
     const [errorMSG, setErrorMSG] = useState('')
+
 
     const handleCLick = (types) => {
         dispatch(addSlot({
@@ -67,9 +68,6 @@ const ChooseType = () => {
                 <div className="inputDiv">
                     <input type="text" name="yourName" required placeholder="Enter your name here..."
                         onChange={e => setName(e.target.value)}></input>
-                    {
-                        name.length>2 &&  <i className="large thumbs up icon"></i>
-                    }
                 </div>
                 <div className="inputDiv">
                     

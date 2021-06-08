@@ -28,9 +28,9 @@
     width: 80%;
     height: 15%;
     border-radius: 15px;
-    border :2px solid white;
-    background-color:#C3941D ;
-    color: black;
+    border :2px solid var(--text);
+    background-color:var(--unique) ;
+    color: var(--back);
     margin: 2% auto;
     font-size: x-large;
     font-weight: bold;
