@@ -29,3 +29,7 @@
     justify-content: space-evenly;
     text-align: center;
 }
+
+.daysGridSingleItem h5 {
+    margin: 0;
+}

@@ -97,13 +97,45 @@
 
 
 .activeItem {
-    min-height: 25rem;
+    min-height: 20rem;
 }
 
 .aboutUsLi p {
     margin-top: 2rem;
 }
 
+.pricingSec{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.pricingSec h3 {
+    margin: 0;
+}
+
+.contactRow {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5rem;
+
+}
+
+.contactItem{
+    width: fit-content;
+    margin: 0;
+    padding: 3%;
+}
+
+.dinamicMapSec {
+    width: 90%;
+    min-height: 15rem;
+    background-color: khaki;
+}
 
 .logoDiv {
     width: 60vw;

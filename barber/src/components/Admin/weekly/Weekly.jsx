@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Schedule from '../Schdule'
 import './weekly.css'
-import { daysOfTheWeek , closingHoursFriday , avaiabilty} from '../../utility'
+import { daysOfTheWeek , closingHoursFriday , avaiabilty , DATABASE} from '../../utility'
 import axios from 'axios'
 
 export default function Weekly() {
@@ -13,7 +13,7 @@ export default function Weekly() {
     useEffect(() => {
         const getWeekly = async () => {
             setloadingWeekly(true)
-            const theWeek = await axios.get('http://localhost:3900/mybarber/api/getnextsevendays')
+            const theWeek = await axios.get(`${DATABASE}/getnextsevendays`)
             setweekly(theWeek.data.days)
             setloadingWeekly(false)
         }

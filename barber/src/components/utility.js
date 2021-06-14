@@ -30,3 +30,21 @@ export const adminActios = [
     {name : 'Custom Date', page:'/admin/customdate'},
     {name : 'Manage Days Off', page:'/admin/mangedaysoff'}
 ]
+
+export const location = {
+    adress : '29 Matalon Rd , Tel Aviv'
+}
+export const contactUs = [
+    {
+        name: 'phone' , route: '0545729402', color:'green'
+    },
+    {
+        name: 'mail' , route: 'gilad18587@gmail.com', color:'red'
+    },
+    {
+        name: 'facebook' , route: 'GILAD YEFET', color:'blue'
+    },
+    {
+        name: 'instagram' , route: 'gilad1987' , color:'white'
+    }
+]
