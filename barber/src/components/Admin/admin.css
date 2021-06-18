@@ -22,6 +22,7 @@
 
 .adminPage {
     width: 100vw;
+    min-height: 95vh;
     background-color: var(--back);
     margin: auto;
     color: var(--text);

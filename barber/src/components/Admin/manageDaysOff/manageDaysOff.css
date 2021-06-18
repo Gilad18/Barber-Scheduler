@@ -3,10 +3,30 @@
     height: 100vh;
     color: var(--text);
     background-color: var(--back);
-    margin: 0;
 }
 
 .daysOffActionSec {
     width: 100vw;
     height: 80vh;
+}
+
+.pickedDaysOffs {
+    width: 90%;
+    margin: -3rem auto;
+}
+
+.daysoffSecButton {
+    display: flex;
+   justify-content: center;
+   margin-top: 5rem;
+}
+.daysoffSecButton button {
+    width: 50%;
+    height: 4rem;
+    background-color: var(--unique) !important;
+    color: var(--back) !important;
+    font-size: large !important;
+}
+.daysoffmessage{
+    text-align: center;
 }

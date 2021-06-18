@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Tab } from 'semantic-ui-react'
 import Schedule from './Schdule'
 import Weekly from './weekly/Weekly'

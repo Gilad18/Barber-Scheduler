@@ -54,10 +54,7 @@ const ConfirmSlot = () => {
         <div className="currentPage confirmSlot">
             <div className="currentHeader">
                 {
-                    succes ?
-                    <h2 className="succcesMsgConfirm">Reservation is booked! </h2>
-                    :
-                    <h3>{`Review & Confirm`}</h3>
+                    !succes && <h3>{`Review & Confirm`}</h3>                   
                 }
             </div>
             <div className="currentBody">
@@ -85,12 +82,14 @@ const ConfirmSlot = () => {
             </div>
             <div className="currentfooter">
                 {
-                    !succes &&
+                    !succes ?
                         <React.Fragment>        
                              <button className={`ui primary button ${loading ? 'loading' : ''}`}
                             onClick={handleConfirm} >CONFIRM</button>
                             <p style={{ color: 'red' }}>{erroeMessage}</p>
                         </React.Fragment>
+                        :
+                        <h2 className="succcesMsgConfirm">Reservation is booked! </h2>
                 }
             </div>
         </div>

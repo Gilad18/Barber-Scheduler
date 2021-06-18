@@ -17,6 +17,8 @@ body {
   box-sizing: border-box;
   background-color: var(--back);
   color: var(--text);
+  min-height:100%;
+  height:100%;
 }
 
 code {

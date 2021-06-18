@@ -79,7 +79,5 @@
 
 .succcesMsgConfirm {
     color: var(--unique);
-    position: relative;
-    top: 4rem;
     text-align: center;
 }

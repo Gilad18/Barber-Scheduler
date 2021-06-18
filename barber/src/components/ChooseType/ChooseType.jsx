@@ -23,6 +23,7 @@ const ChooseType = () => {
             price: types.price,
             id: Date.now()
         }))
+        setErrorMSG('')
     }
 
     useEffect(() => {
@@ -33,7 +34,7 @@ const ChooseType = () => {
                     setPhoneErr(true)
                 }
             }
-        }, 500);
+        }, 1000);
         return () => {
             clearTimeout(timeoutId)
         }
@@ -41,6 +42,7 @@ const ChooseType = () => {
 
     const handleSetNumber = (e) => {
         setNum(e.target.value)
+        setErrorMSG('')
     }
 
     const handleNEXT = () => {

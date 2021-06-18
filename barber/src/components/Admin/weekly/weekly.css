@@ -33,3 +33,12 @@
 .daysGridSingleItem h5 {
     margin: 0;
 }
+
+.loaderWeekely {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    color:white;
+    position: absolute;
+    top: 0;
+}
