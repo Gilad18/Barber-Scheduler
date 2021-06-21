@@ -57,6 +57,14 @@
     color: var(--back);
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 4%;
+    font-weight: bold;
+}
+
+.reserved p {
+    margin: 0;
 }
 
 .modalSlot {

@@ -6,7 +6,6 @@ export default function BackButton() {
     const history = useHistory()
 
     const handleBAck = () => {
-        console.log('click')
         history.push('/admin/dashboard')
     }
 

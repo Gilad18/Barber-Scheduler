@@ -40,7 +40,7 @@ export default function Scheudle({ givenDate }) {
         return setisDayOff(true);
       }
       setisHoliday(false);
-      setisHoliday(false);
+      setisDayOff(false);
       const getSlots = await axios({
         method: "get",
         url: `${DATABASE}/schedule/${givenDate}`,
@@ -62,7 +62,7 @@ export default function Scheudle({ givenDate }) {
       setTodaySlots(workingHours);
     };
     serach();
-  }, [givenDate, openModal, openEditReservation ]);
+  }, [givenDate, openModal, openEditReservation,workingHours ]);
 
   useEffect(() => {
     //find a way to render it
@@ -77,7 +77,7 @@ export default function Scheudle({ givenDate }) {
       setSelfBookClose(true);
     };
     isClosedForBooking();
-  }, [modalisOpened]);
+  }, [givenDate , modalisOpened]);
 
   const handleSlotClick = (item, e) => {
     if (e.target.className.includes("reserved")) {

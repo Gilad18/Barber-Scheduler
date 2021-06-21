@@ -32,14 +32,13 @@ router.post('/newslot' , (req,res) => {
 .put('/updateholidays', (req,res) => {
     daysOffControllers.setHolidays(req,res)
 })
-.put('/updateSlotbyID' , (req,res) => {
+.patch('/updateslot/:id' , (req,res) => {
     slotControllers.updateSlot(req,res)
 })
 .get('/getnextsevendays' , (req,res) => {
     slotControllers.getNext7Days(req,res)
 })
 .post('/daysoff/setvacationdates' , (req,res) => {
-    console.log('here')
     daysOffControllers.setVacationDates(req,res)
 })
 

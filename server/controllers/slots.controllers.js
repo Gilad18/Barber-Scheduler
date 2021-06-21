@@ -7,6 +7,10 @@ moment().format();
 
 const createNewSlot = async (req, res) => {
     const { name, phone, threat, price, date, hour } = req.body  
+    const exsited = await slots.findOne({date : date,hour:hour})
+    if(exsited){
+        return res.status(400).json({ error : 'Slot is already taken, please find a diffrent one' })
+    }
     try {
         const newSlot = new slots({
             name,
@@ -14,8 +18,7 @@ const createNewSlot = async (req, res) => {
             threat,
             price,
             date,
-            hour,
-            scheduled: date + hour
+            hour
         })
 
         await newSlot.save()
@@ -46,7 +49,7 @@ const getTodaySlots = async (req, res) => {
 const getDaySchedule = async (req, res) => {
     const theDay = req.params.day
     try {
-        const theDaySlots = await slots.find({ date: theDay }, { scheduled: 0 })
+        const theDaySlots = await slots.find({ date: theDay })
         res.status(200).json({ success: ' amazing', theDaySlots })
     }
     catch (err) {
@@ -68,15 +71,26 @@ const deleteSlot = async (req, res) => {
 const updateSlot = async (req, res) => {
 
     const updates = Object.keys(req.body)
-    const allowupdates = ['phone', 'threat', 'price', 'date', 'hour', 'scheduled']
+    const allowupdates = ['name','phone', 'threat', 'price','date', 'hour']
     const isValidProps = updates.every(item => allowupdates.includes(item))
     if (!isValidProps) {
         return res.status(406).send({ error: ' Invalid Updates' })
     }
     try {
-        let extractUpates = { id, phone, threat, price, date, hour, scheduled } = req.body;
-        const updatedSlot = await slots.findByIdAndUpdate(req.body.id, extractUpates, { new: true, runValidators: true })
+        const existed = await slots.findOne({_id:req.params.id},{date:1,hour:1})
+        if(existed.date!==req.body.date || existed.hour!==req.body.hour){
+            const avalable = await slots.findOne({date : req.body.date,hour:req.body.hour})
+            if(avalable){
+                return res.status(400).json({ error : 'Slot is already taken, please find a diffrent one' })
+            }
+            
+        }
+        const updatedSlot = await slots.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+        if(!updatedSlot){
+            return res.status(404).send()
+        }
         updatedSlot.save()
+        res.status(200).json({ succes: 'Slot is succesfully edited!', updatedSlot })
     }
     catch (error) {
         res.status(400).json({error})

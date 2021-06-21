@@ -39,7 +39,7 @@ export default function EditModal({ modalContent, givenDate }) {
                 succes ?
                     <h3 className="successMessage">{message}</h3>
                     :
-                    <button className={`ui primary button ${loading ? 'loading' : ''}`} onClick={handleConfirm} >
+                    <button className={`ui primary button  ${loading ? 'loading' : ''}`} onClick={handleConfirm} >
                        Delete Reservation
             </button>
             }       

@@ -41,11 +41,6 @@ const slotSchema = mongoose.Schema({
         type : String,
         required:true,
         unique :false
-    },
-    scheduled : {
-        type : String,
-        required:true,
-        unique :true
     }
 })
 
