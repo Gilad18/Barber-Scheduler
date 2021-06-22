@@ -62,7 +62,7 @@ export default function Scheudle({ givenDate }) {
       setTodaySlots(workingHours);
     };
     serach();
-  }, [givenDate, openModal, openEditReservation,workingHours ]);
+  }, [givenDate, openModal, openEditReservation ]);
 
   useEffect(() => {
     //find a way to render it

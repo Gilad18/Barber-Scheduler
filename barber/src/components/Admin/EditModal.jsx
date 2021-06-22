@@ -1,48 +1,182 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import {DATABASE} from '../utility'
-import './admin.css'
+import React, { useState } from "react";
+import axios from "axios";
+import { DATABASE, avaiabilty, closingHoursFriday ,theTypes } from "../utility";
+import Calendar from "react-calendar";
+import moment from "moment";
+import "./admin.css";
 
 export default function EditModal({ modalContent, givenDate }) {
-       
-    const [loading, setLoading] = useState(false)
-    const [succes, setSucces] = useState(false)
-    const [message , setMessage] = useState('')
+  const [loading, setLoading] = useState(false);
 
-    const handleConfirm = async ()  => {
-        setLoading(true)
-        try {
-            const deleteSlot = await axios({
-                method : 'delete',
-                url : `${DATABASE}/deleteslot`,
-                data : {
-                    slotID : modalContent._id
-                }
-            })
-            setMessage(deleteSlot.data.success)
-            setLoading(false)
-            setSucces(true)
-        }
-        catch(error) {
-            console.log(error)
-        }
+  const [succes, setSucces] = useState(false);
+  const [message, setMessage] = useState("");
+  const [editMode, setEditMode] = useState(false);
+
+  const [content, setContent] = useState(modalContent);
+  const [value, onChange] = useState(new Date(givenDate));
+  const [availableHours, setAvailableHours] = useState(avaiabilty);
+
+  const handleDelete = async () => {
+    setLoading(true);
+    try {
+      const deleteSlot = await axios({
+        method: "delete",
+        url: `${DATABASE}/deleteslot`,
+        data: {
+          slotID: modalContent._id,
+        },
+      });
+      setMessage(deleteSlot.data.success);
+      setLoading(false);
+      setSucces(true);
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    return (
-        <div className="modalBody">
-            <h2>{givenDate}</h2>
-            <h2>{modalContent.hour}</h2>   
-            <h4>{modalContent.name}</h4> 
-            <h4>{modalContent.threat}</h4>  
-            <h4>{modalContent.phone}</h4>   
-            {
-                succes ?
-                    <h3 className="successMessage">{message}</h3>
-                    :
-                    <button className={`ui primary button  ${loading ? 'loading' : ''}`} onClick={handleConfirm} >
-                       Delete Reservation
+  const handleEdit = async () => {
+    setMessage('')
+    const { name, date, hour, price, threat, phone } = content;
+    try {
+      const editSlot = await axios({
+        method: "patch",
+        url: `${DATABASE}/updateslot/${content._id}`,
+        data: {
+          name,
+          date,
+          hour,
+          phone,
+          price,
+          threat,
+        },
+      });
+      setMessage(editSlot.data.succes);
+    } catch ( error) {
+      console.log(error);
+    }
+  };
+
+  const handleChangeInput = (e, property) => {
+    console.log(e);
+    setContent({
+      ...content,
+      [property]: e.target.value,
+    });
+  };
+
+  const handlePickedDay = async (e) => {
+    const theDate = moment(e).format("LL");
+    setContent({
+      ...content,
+      date: theDate,
+    });
+    try {
+      const bookedHours = await axios({
+        method: "get",
+        url: `${DATABASE}/todaySlot/${theDate}`,
+      });
+      let theHoursObjects = bookedHours.data.theDaySlots;
+      let reserved = [];
+      theHoursObjects.forEach((item) => reserved.push(item.hour));
+      let allHoursArray = avaiabilty;
+      let avaiableHours = allHoursArray.filter(
+        (item) => !reserved.includes(item)
+      );
+      setAvailableHours(avaiableHours);
+      if (
+        e.toLocaleDateString("en-GB") === new Date().toLocaleDateString("en-GB")
+      ) {
+        let timeNow = new Date().getHours();
+        let filteredPriviousSlot = avaiableHours.filter(
+          (item) => parseInt(item[0] + item[1]) >= timeNow
+        );
+        setAvailableHours(filteredPriviousSlot);
+      }
+      if (e.getDay() === 5) {
+        let shortDay = avaiableHours.filter(
+          (item) => !closingHoursFriday.includes(item)
+        );
+        setAvailableHours(shortDay);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  return (
+    <div className="modalBody">
+      <button onClick={() => setEditMode(true)}>Edit Reservation</button>
+      <h2>{givenDate}</h2>
+      <h2>{content.hour}</h2>
+      <h2>{content.name}</h2>
+      <h2>{content.threat}</h2>
+      <h2>{content.phone}</h2>
+
+      {succes ? (
+        <h3 className="successMessage">{message}</h3>
+      ) : (
+        <>
+          <div className="deleteButton">
+            <button
+              className={`ui primary button  ${loading ? "loading" : ""}`}
+              onClick={handleDelete}
+            >
+              Delete Reservation
             </button>
-            }       
+          </div>
+        </>
+      )}
+      {editMode && (
+        <div className="editModeSec">
+          <h2 onClick={()=>setEditMode(false)} style={{textAlign:'left'}}>X</h2>
+          <input
+            type="text"
+            value={content.name}
+            onChange={(e) => handleChangeInput(e, "name")}
+          ></input>
+          <input
+            type="text"
+            value={content.phone}
+            onChange={(e) => handleChangeInput(e, "phone")}
+          ></input>
+          <select name="treat" value={content.treat} >
+            {
+              theTypes.map((item,index)=> {
+                return <option key={index} value={item.name}>{item.name}</option>
+              })
+            }
+          </select>
+          {content.date}
+          <Calendar
+            onChange={onChange}
+            value={value}
+            calendarType="Hebrew"
+            defaultView="month"
+            maxDetail="month"
+            onClickDay={(e) => handlePickedDay(e)}
+            tileDisabled={({ date }) =>
+              date.getDay() === 1 || date.getDay() === 6
+            }
+          />
+          <select
+            name="hour"
+            onChange={(e) => handleChangeInput(e, "hour")}
+            value={content.hour}
+          >
+            {availableHours.map((item, index) => {
+              return (
+                <option value={item} key={index}>
+                  {item}
+                </option>
+              );
+            })}
+          </select>
+          <button className={`ui primary button`} onClick={handleEdit}>
+            Edit Reservation
+          </button>
+          <h2>{message}</h2>
         </div>
-    )
+      )}
+    </div>
+  );
 }

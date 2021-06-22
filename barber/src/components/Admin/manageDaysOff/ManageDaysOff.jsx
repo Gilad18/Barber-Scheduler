@@ -16,7 +16,7 @@ export default function ManageDaysOff() {
             return console.log('please select start and end days')
         }
         setLoading(true)
-        let thedays = []
+        let thedays = []               //make sure the right format is pass using moment
         let nextDay = new Date(value[0])
         thedays.push(nextDay.toLocaleDateString('en-GB'))
         while(nextDay.toLocaleDateString('en-GB')!==value[1].toLocaleDateString('en-GB')) {

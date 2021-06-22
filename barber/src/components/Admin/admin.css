@@ -86,10 +86,13 @@
 
 .modalBody {
     width: 100vw;
-    height: 70vh;
+    height: 90vh;
     margin-top: 8vh;
     padding: 2%;
     margin: 8vh auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .ModalDateAndHour {
@@ -157,6 +160,42 @@
     background-color: var(--unique) !important;
     color: var(--text) !important;
     font-size: x-large !important;
+}
+.modalBody .deleteButton button {
+    width: 100%;
+    height: 4rem;
+    background-color: red !important;
+    color: var(--text) !important;
+    font-size: x-large !important;
+}
+
+
+.editModeSec {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: var(--back);
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 20;
+}
+
+.editModeSec input , .editModeSec select {
+    width: 50%;
+    height: 5%;
+    background-color: transparent;
+    color: var(--text);
+    border: 1px solid var(--unique);
+    border-radius: 5px;
+    padding: 1%;
+}
+
+.editModeSec select option {
+    background-color: black;
+    color: var(--unique);
 }
 
 .successMessage {

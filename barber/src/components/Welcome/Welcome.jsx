@@ -3,8 +3,9 @@ import './welcome.css'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { nextPage } from '../../features/actions'
-import axios from 'axios'
-import { DATABASE } from '../utility'
+// import axios from 'axios'
+// import { DATABASE } from '../utility'
+import {getDaysOff} from '../functionUntilty'
 import MenuBar from './MenuBar'
 
 
@@ -18,16 +19,7 @@ const Welcome = () => {
     const handleClick = async () => {
         history.push('/user/what/1')
         dispatch(nextPage())
-        const daysOffForBookings = await axios.get(
-            `${DATABASE}/daysoff/fullybooked`
-        )
-        let noBookingDays =
-            daysOffForBookings.data.mydaysOff[0].holidays.concat(
-                daysOffForBookings.data.mydaysOff[0].fullyBooked,
-                daysOffForBookings.data.mydaysOff[0].closedForBooking,
-                daysOffForBookings.data.mydaysOff[0].vacation
-            )
-        localStorage.setItem('daysoff', noBookingDays)
+        getDaysOff()
     }
 
     const handleClickUser = () => {

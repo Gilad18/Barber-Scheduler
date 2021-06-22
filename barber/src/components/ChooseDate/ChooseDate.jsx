@@ -5,6 +5,7 @@ import "react-calendar/dist/Calendar.css";
 import moment from "moment";
 import axios from "axios";
 import { avaiabilty, closingHoursFriday, DATABASE } from "../utility";
+import {getDaysOff} from '../functionUntilty'
 import "./chooseDate.css";
 
 import { useDispatch } from "react-redux";
@@ -18,14 +19,7 @@ const ChooseDate = () => {
 
   const getmyDaysOff = async () => {
     if (localStorage.getItem("daysoff") === null) {
-      const daysOffForBookings = await axios.get(
-        `${DATABASE}/daysoff/fullybooked`
-      );
-      let noBookingDays = daysOffForBookings.data.mydaysOff[0].holidays.concat(
-        daysOffForBookings.data.mydaysOff[0].fullyBooked,
-        daysOffForBookings.data.mydaysOff[0].closedForBooking
-      );
-      localStorage.setItem("daysoff", noBookingDays);
+      getDaysOff()
     }
 
     offDays = localStorage.getItem("daysoff");
