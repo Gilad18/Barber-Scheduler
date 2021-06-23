@@ -8,7 +8,6 @@ export default function OpenDay({givenDate}) {
 
     const day = moment(givenDate).format('DD-MM-YYYY')
 
-    const [open, setOpen] = useState(false)
     const [message, setMessage] = useState('')
     const [success , setSuccess] = useState(false)
 
@@ -24,11 +23,6 @@ export default function OpenDay({givenDate}) {
             console.log(setDateDisableForBooking.data.success)
             setSuccess(true)
             setMessage(setDateDisableForBooking.data.success)
-            setTimeout(() => {
-                setOpen(false)
-                setSuccess(false)
-                setMessage('')
-            }, 3000);
         }
 
         catch (error) {
@@ -38,23 +32,9 @@ export default function OpenDay({givenDate}) {
     
     return (
         <div className="closeDaySec">
-           
-           <Modal
-                basic
-                onClose={() => setOpen(false)}
-                onOpen={() => setOpen(true)}
-                open={open}
-                size='small'
-                trigger={
-                    <button className="ui huge icon button">
-                        <i aria-hidden="true" className="users  icon"></i>
-                       <p> Open this day for self-booking</p>
-                    </button>
-                }
-            >
-                <Header>
-                    Are You sure you want to enable {givenDate}?
-                </Header>
+                <h1>
+                    Enable {givenDate}?
+                </h1>
                 <Modal.Content>
                     {
                         !success ? 
@@ -70,15 +50,10 @@ export default function OpenDay({givenDate}) {
                     }
                   </Modal.Content>
                 <Modal.Actions>
-                    <Button basic color='red' inverted onClick={() => setOpen(false)}>
-                        <Icon name='remove' /> No
-                    </Button>
-                    <Button color='green' inverted onClick={handleYES}>
+                    <Button inverted onClick={handleYES}>
                         <Icon name='checkmark' /> Yes
                     </Button>
                 </Modal.Actions>
-            </Modal>
-
         </div>
     )
 }

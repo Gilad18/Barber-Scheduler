@@ -11,7 +11,7 @@ export default function BackButton() {
 
     return (
         <React.Fragment>
-             <button className="backToMenu" onClick={handleBAck} ><i className="bars icon"></i></button>
+             <button className="backToMenu" onClick={handleBAck} ><i className="home icon"></i></button>
         </React.Fragment>
     )
 }

@@ -12,6 +12,7 @@ import EditModal from "./EditModal";
 import axios from "axios";
 import CloseDay from "./CloseDay";
 import OpenDay from "./OpenDay";
+import { Button, Icon, Label } from "semantic-ui-react";
 import moment from "moment";
 
 export default function Scheudle({ givenDate }) {
@@ -26,7 +27,7 @@ export default function Scheudle({ givenDate }) {
   const [selfBookClose, setSelfBookClose] = useState(true);
   const [isHoliday, setisHoliday] = useState(false);
   const [isdayOff, setisDayOff] = useState(false);
-  const [modalisOpened , setModalisOpen] = useState(false)
+  const [closeDayMoadl, setModalisOpen] = useState(false);
 
   useEffect(() => {
     const serach = async () => {
@@ -62,7 +63,7 @@ export default function Scheudle({ givenDate }) {
       setTodaySlots(workingHours);
     };
     serach();
-  }, [givenDate, openModal, openEditReservation ]);
+  }, [givenDate, openModal, openEditReservation]);
 
   useEffect(() => {
     //find a way to render it
@@ -77,28 +78,23 @@ export default function Scheudle({ givenDate }) {
       setSelfBookClose(true);
     };
     isClosedForBooking();
-  }, [givenDate , modalisOpened]);
+  }, [givenDate, closeDayMoadl]);
 
   const handleSlotClick = (item, e) => {
     if (e.target.className.includes("reserved")) {
       setModalContent(item);
       setOpenEditReservation(true);
       return console.log("booked slot, want to edit or delete?");
-      //here we should open a diffrent modal for edit, delete reservation
     }
     setModalContent(item);
     setOpenModal(true);
   };
 
-  const modalOpened = () => {
-    setModalisOpen(!modalisOpened)
-  }
   return (
     <div className={`adminPage`}>
       {selfBookClose && (
         <React.Fragment>
           <p className="headingMessgaeSchedule">
-            {" "}
             * This day is close for self-booking
           </p>
         </React.Fragment>
@@ -124,10 +120,52 @@ export default function Scheudle({ givenDate }) {
             );
           })}
           {selfBookClose ? (
-            <OpenDay onClick={modalOpened} givenDate={givenDate} />
+            <div className="ModifySelfBookingBtn">
+                <Button as="div" labelPosition="left" onClick={() => setModalisOpen(true)}>
+                <Button color="green">
+                  <Icon name="lock open" />
+                </Button>
+                <Label as="a" basic color="black" pointing="left">
+                Enable Self Booking
+                </Label>
+              </Button>
+              {/* <Button
+                content="Open Day For Self Booking"
+                icon="lock open"
+                color="green"
+                labelPosition="left"
+                onClick={() => setModalisOpen(true)}
+              /> */}
+            </div>
           ) : (
-            <CloseDay onClick={modalOpened} givenDate={givenDate} />
+            <div className="ModifySelfBookingBtn">
+              <Button as="div" labelPosition="left" onClick={() => setModalisOpen(true)}>
+                <Button color="red">
+                  <Icon name="lock" />
+                </Button>
+                <Label as="a" basic color="red" pointing="left">
+                Disable Self Booking
+                </Label>
+              </Button>
+            </div>
           )}
+        </>
+      )}
+      {closeDayMoadl && (
+        <>
+          <div className="modalSlot">
+            <button
+              className="closeMidalBTN"
+              onClick={() => setModalisOpen(false)}
+            >
+              <i aria-hidden="true" className="close  icon"></i>
+            </button>
+            {selfBookClose ? (
+              <OpenDay givenDate={givenDate} />
+            ) : (
+              <CloseDay givenDate={givenDate} />
+            )}
+          </div>
         </>
       )}
       {openModal && (
