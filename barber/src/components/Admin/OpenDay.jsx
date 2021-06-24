@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Header, Modal, Button, Icon } from 'semantic-ui-react'
+import {Modal, Button, Icon } from 'semantic-ui-react'
 import moment from 'moment'
 import axios from 'axios'
 import {DATABASE} from '../utility'

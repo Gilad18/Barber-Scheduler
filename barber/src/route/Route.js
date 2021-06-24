@@ -7,7 +7,7 @@ import Confirm from '../components/ConfirmSlot/ConfirmSlot'
 import Pagination from '../components/Paginagion/Pagination'
 import Admin from '../components/Admin/Admin'
 import Dashboard from '../components/Admin/dashboard/Dashboard'
-import ManageDaysOff from '../components/Admin/manageDaysOff/ManageDaysOff'
+import DayOffDash from '../components/Admin/manageDaysOff/DayOffDash'
 import CustomDate from '../components//Admin/customDate/CustomDate'
 
 
@@ -23,7 +23,7 @@ export default function Routes() {
                 <Route path="/user/confirm/:page" exact component={Confirm} />
                 <Route path="/admin/week" exact component={Admin} />
                 <Route path="/admin/dashboard" exact component={Dashboard} />
-                <Route path="/admin/mangedaysoff" exact component={ManageDaysOff} />
+                <Route path="/admin/mangedaysoff" exact component={DayOffDash} />
                 <Route path="/admin/customdate" exact component={CustomDate} />
             </React.Fragment>
             </BrowserRouter>

@@ -3,10 +3,9 @@ import './welcome.css'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { nextPage } from '../../features/actions'
-// import axios from 'axios'
-// import { DATABASE } from '../utility'
 import {getDaysOff} from '../functionUntilty'
 import MenuBar from './MenuBar'
+
 
 
 const Welcome = () => {
@@ -36,14 +35,6 @@ const Welcome = () => {
                 
                 <i className="bars big icon "  style={{zIndex:'20'}} onClick={handleToggleMenu}></i>
                 <i className="user big icon " onClick={handleClickUser}></i>
-                {/* <div className="menuBarDiv">
-                    <div className="hamburgerDiv">
-                        <div className="hamburgerLine1"></div>
-                        <div className="hamburgerLine2"></div>
-                        <div className="hamburgerLine3"></div>
-                    </div>
-                    <button className="toggleMenuBar" onClick={()=>console.log('click')}></button>
-                </div> */}
             </div>
             <div className="currentBody">
                 <div className="logoDiv"></div>

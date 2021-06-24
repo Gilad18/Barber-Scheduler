@@ -5,6 +5,12 @@
     background-color: var(--back);
 }
 
+.daysoffSecHeader {
+    width: 100%;
+    height: 5vh;
+    padding: 5%;
+}
+
 .daysOffActionSec {
     width: 100vw;
     height: 80vh;
@@ -29,4 +35,74 @@
 }
 .daysoffmessage{
     text-align: center;
+}
+
+.selectedDaysOff {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 12vh;
+    margin-top: 5vh;
+}
+
+.selectedDaysOff h2 {
+    margin: 0;
+}
+
+.singleSelectedDate {
+    width: 30%;
+    border: 1px solid var(--unique);
+    border-radius: 5px;
+    color: var(--unique);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: large;
+    padding: 1%;
+}
+
+.infoDiv {
+    width: 80vw;
+    height: 20vh;
+    position: absolute;
+    top: 8vh;
+    left: 10vw;
+    z-index: 20;
+    background-color: var(--text);
+    color: var(--back);
+    border-radius: 15px;
+    padding: 2%;
+}
+
+.viewDaysBody {
+    width: 80vw;
+    height: 60vh;
+    margin-top: 10vh;
+    display: flex;
+    justify-content: space-around;
+    margin: 10vh auto;
+}
+
+.viewDayBodyInput , .viewDaysBodyResults {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+}
+.viewDayBodyInput {
+    border-left: solid var(--text) 2px;
+    border-top: solid var(--text) 2px;
+    border-bottom: solid var(--text) 2px;
+}
+
+.viewDayBodyInput label {
+    color: var(--text) !important;
+}
+
+.viewDaysBodyResults{
+    background-color: var(--unique);
+    align-items: center;
+    border-top-right-radius: 15px ;
+    border-bottom-right-radius: 15px ;
 }

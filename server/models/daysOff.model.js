@@ -1,13 +1,6 @@
 const mongoose = require('mongoose');
 
 const daysOffSchema = mongoose.Schema({
-    holidays: [
-        {
-            type: String,
-            required: false,
-            unique: true
-        }
-    ],
     fullyBooked: [
         {
             type: String,

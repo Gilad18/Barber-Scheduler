@@ -31,7 +31,7 @@ export default function Scheudle({ givenDate }) {
 
   useEffect(() => {
     const serach = async () => {
-      if (holidays.find((item) => item.date === givenDate)) {
+      if ( holidays.find((item)=> item.date === moment(theDate).format('DD-MM-YYYY'))) {
         return setisHoliday(true);
       }
       if (
@@ -66,7 +66,6 @@ export default function Scheudle({ givenDate }) {
   }, [givenDate, openModal, openEditReservation]);
 
   useEffect(() => {
-    //find a way to render it
     const isClosedForBooking = async () => {
       const theDateToCheck = moment(givenDate).format("DD-MM-YYYY");
       const isClosed = await axios.get(
@@ -90,6 +89,11 @@ export default function Scheudle({ givenDate }) {
     setOpenModal(true);
   };
 
+  const getHolidayName = () => {
+    let requested = holidays.find((item)=>item.date===moment(givenDate).format('DD-MM-YYYY'))
+    return requested.name
+  }
+
   return (
     <div className={`adminPage`}>
       {selfBookClose && (
@@ -103,7 +107,8 @@ export default function Scheudle({ givenDate }) {
         daysOfTheWeek[new Date(givenDate).getDay()]
       }`}</h2>
       {isHoliday || isdayOff ? (
-        <h2>No Work Today</h2>
+        <><h2>No Work Today</h2>
+        { isHoliday && <h2>Holiday : {getHolidayName()}</h2>}</>
       ) : (
         <>
           {todaySlots.map((item, index) => {

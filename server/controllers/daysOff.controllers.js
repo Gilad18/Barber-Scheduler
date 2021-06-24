@@ -1,6 +1,7 @@
 const daysOff = require('../models/daysOff.model')
 const slots = require('../models/slots.model')
-
+var moment = require('moment')
+moment().format();
 
 const closeDayForBooking = async (req, res) => {
     const day = req.body.day
@@ -48,22 +49,11 @@ const isClosedForBooking = async (req,res) => {
     }
 }
 
-const setHolidays = async (req,res) => {
-  const dates = req.body.dates
-  try {
-     await daysOff.updateMany({$set:{holidays : dates}})
-     res.status(200).json({success:'msg'})
-  }
-  catch(error) {
-    res.status(400).json({ error })
-  }
-}
-
 const setVacationDates = async (req, res) => {
     const day = req.body.days
     for(let i=0 ; i<day.length ; i++){
-        let exsitedSlots = await slots.find({date:day[i]})
-        if(exsitedSlots.length>0) {
+        let exsitedSlots = await slots.findOne({date:day[i]})
+        if(exsitedSlots) {
             return res.status(400).json(
             {message : `You have a reserved slot on ${day[i]},
              Make sure to cancel it before you set a vaction day`})
@@ -84,6 +74,5 @@ module.exports = {
     getDaysOff,
     openDayForBooking,
     isClosedForBooking,
-    setHolidays,
     setVacationDates
 }

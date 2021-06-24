@@ -29,9 +29,6 @@ router.post('/newslot' , (req,res) => {
 .delete('/deleteslot' , (req,res) => {
     slotControllers.deleteSlot(req,res)
 })
-.put('/updateholidays', (req,res) => {
-    daysOffControllers.setHolidays(req,res)
-})
 .patch('/updateslot/:id' , (req,res) => {
     slotControllers.updateSlot(req,res)
 })
