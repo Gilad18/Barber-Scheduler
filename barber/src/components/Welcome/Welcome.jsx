@@ -6,8 +6,6 @@ import { nextPage } from '../../features/actions'
 import {getDaysOff} from '../functionUntilty'
 import MenuBar from './MenuBar'
 
-
-
 const Welcome = () => {
 
     const history = useHistory()
@@ -32,8 +30,7 @@ const Welcome = () => {
     return (
         <div className="currentPage welcome">
             <div className="header" >
-                
-                <i className="bars big icon "  style={{zIndex:'20'}} onClick={handleToggleMenu}></i>
+                <i className={`${menuBarOpen ? 'close' : 'bars'} big icon `}  style={{zIndex:'20'}} onClick={handleToggleMenu}></i>
                 <i className="user big icon " onClick={handleClickUser}></i>
             </div>
             <div className="currentBody">

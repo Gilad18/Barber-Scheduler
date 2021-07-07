@@ -28,7 +28,6 @@ export default function ReserveSlotModal({ modalContent, givenDate }) {
                     scheduled: givenDate + modalContent.hour
                 }
             })
-            console.log(setReservation)
             setTimeout(() => {
                 setLoading(false)
                 setSucces(true)

@@ -54,10 +54,14 @@ export const theTypes = [
 ];
 
 export const adminActios = [
-  { name: "Upcoming Schedule", page: "/admin/week" },
-  { name: "Custom Date", page: "/admin/customdate" },
+  { name: "Upcoming 10 Days", page: "/admin/week" },
+  { name: "Custom Date View", page: "/admin/customdate" },
   { name: "Manage Days Off", page: "/admin/mangedaysoff" },
 ];
+
+export const aboutUsText = 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore ullam, libero officiis similique exercitationem hic ut necessitatibus totam voluptates vitae dignissimos pariatur nulla molestiae quia.'
+
+export const legalTerms = 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore ullam, libero officiis similique exercitationem hic ut necessitatibus totam voluptates vitae dignissimos pariatur nulla molestiae quia.'
 
 export const location = { adress: "29 Matalon Rd, Tel Aviv" }; // should include coordinates for the map in the future
 

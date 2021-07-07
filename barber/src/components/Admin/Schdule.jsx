@@ -91,7 +91,9 @@ export default function Scheudle({ givenDate }) {
 
   const getHolidayName = () => {
     let requested = holidays.find((item)=>item.date===moment(givenDate).format('DD-MM-YYYY'))
-    return requested.name
+    if(requested.name){
+      return requested.name
+    }
   }
 
   return (

@@ -93,7 +93,13 @@
     background-color: var(--unique) !important;
     color: black !important;
     font-size: large;
-    margin-bottom: 8%;
+}
+
+.noSlotsText {
+    text-align: center;
+    color: var(--assist);
+    width: 75%;
+    margin: auto;
 }
 
 .avaiabily .loader {

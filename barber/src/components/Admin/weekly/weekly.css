@@ -1,5 +1,5 @@
 .weeklyPage {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-color: var(--back);
     color: var(--text); 
@@ -8,7 +8,7 @@
 
 
 .daysGrid {
-    width: 80vw;
+    width: 80%;
     height: 80%;
     margin: 10% auto;
     display: flex;
@@ -35,7 +35,7 @@
 }
 
 .loaderWeekely {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-color: black;
     color:white;

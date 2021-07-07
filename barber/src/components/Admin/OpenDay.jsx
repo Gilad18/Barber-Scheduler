@@ -20,7 +20,6 @@ export default function OpenDay({givenDate}) {
                     day
                 }
             })
-            console.log(setDateDisableForBooking.data.success)
             setSuccess(true)
             setMessage(setDateDisableForBooking.data.success)
         }

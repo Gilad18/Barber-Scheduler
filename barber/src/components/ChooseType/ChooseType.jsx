@@ -4,6 +4,7 @@ import './chooseType.css'
 import { theTypes ,  } from '../utility'
 import { useDispatch, useSelector } from 'react-redux'
 import { addSlot, addDetials, nextPage } from '../../features/actions'
+import Button from '../Assets/Button'
 const validator = require('validator');
 
 const ChooseType = () => {
@@ -90,9 +91,8 @@ const ChooseType = () => {
                 })}
             </div>
             <div className="currentfooter">
+                <Button onClick={handleNEXT} text='Next'/>
                 <h3 style={{ color: 'red' }}>{errorMSG}</h3>
-                <button className="ui primary button" onClick={handleNEXT} >NEXT</button>
-
             </div>
         </div>
     )

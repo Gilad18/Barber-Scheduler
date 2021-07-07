@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { theTypes, contactUs, location } from '../utility'
+import { theTypes, contactUs, location ,aboutUsText, legalTerms } from '../utility'
 
 export default function MenuBar() {
 
@@ -11,15 +11,13 @@ export default function MenuBar() {
                 <li>
                     <div className={`aboutUsLi ${itemChose !== null && itemChose === 'aboutUsLi' ? 'activeItem' : ''}`}
                         onClick={() => setItemChose('aboutUsLi')}>
-                        <h2 className={`${itemChose !== null && itemChose === 'aboutUsLi' ? 'activeh2' : ''}`} > About Us</h2>
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore ullam, libero officiis similique exercitationem hic ut necessitatibus totam voluptates vitae dignissimos pariatur nulla molestiae quia.
-                        </p>
+                        <h1 className={`${itemChose !== null && itemChose === 'aboutUsLi' ? 'activeh2' : ''}`} > About Us</h1>
+                        <p>{aboutUsText}</p>
                     </div></li>
                 <li>
                     <div className={`${itemChose !== null && itemChose === 'pricingLi' ? 'activeItem' : ''}`}
                         onClick={() => setItemChose('pricingLi')}>
-                        <h2 className={`aboutUsLi ${itemChose !== null && itemChose === 'pricingLi' ? 'activeh2' : ''}`} >  Pricing </h2>
+                        <h1 className={`aboutUsLi ${itemChose !== null && itemChose === 'pricingLi' ? 'activeh2' : ''}`} >  Pricing </h1>
                         {theTypes.map((item, index) => {
                             return <div className="pricingSec" key={index}>
                                 <h3>{item.name}</h3>
@@ -30,7 +28,7 @@ export default function MenuBar() {
                 <li>
                     <div className={`locationLi ${itemChose !== null && itemChose === 'locationLi' ? 'activeItem' : ''}`}
                         onClick={() => setItemChose('locationLi')}>
-                        <h2 className={`${itemChose !== null && itemChose === 'locationLi' ? 'activeh2' : ''}`}>  Location </h2>
+                        <h1 className={`${itemChose !== null && itemChose === 'locationLi' ? 'activeh2' : ''}`}>  Location </h1>
                         <div className="contactRow">
                             <div className="contactItem">
                                 <i aria-hidden="true" className="map pin red icon"></i>
@@ -44,7 +42,7 @@ export default function MenuBar() {
                 <li>
                     <div className={`followUsLi ${itemChose !== null && itemChose === 'followUsLi' ? 'activeItem' : ''}`}
                         onClick={() => setItemChose('followUsLi')}>
-                        <h2 className={`${itemChose !== null && itemChose === 'followUsLi' ? 'activeh2' : ''}`}>   Contact Us</h2>
+                        <h1 className={`${itemChose !== null && itemChose === 'followUsLi' ? 'activeh2' : ''}`}>   Contact Us</h1>
                         {
                             contactUs.map((item, index) => {
                                 return <div className="contactRow" key={index}>
@@ -58,6 +56,15 @@ export default function MenuBar() {
                             })
                         }
                     </div></li>
+
+                    <li>
+                    <div className={`legalLI ${itemChose !== null && itemChose === 'legalLI' ? 'activeItem' : ''}`}
+                        onClick={() => setItemChose('legalLI')}>
+                        <h1 className={`${itemChose !== null && itemChose === 'legalLI' ? 'activeh2' : ''}`} > Legal</h1>
+                        <p>{legalTerms}</p>
+                    </div></li>
+
+
             </ul>
         </div>
     )
