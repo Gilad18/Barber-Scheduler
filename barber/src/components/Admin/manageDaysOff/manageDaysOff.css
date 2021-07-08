@@ -64,7 +64,7 @@
 
 .infoDiv {
     width: 80%;
-    height: 20vh;
+    height: fit-content;
     position: absolute;
     top: 8vh;
     left: 10vw;
@@ -72,7 +72,9 @@
     background-color: var(--text);
     color: var(--back);
     border-radius: 15px;
-    padding: 2%;
+    padding: 3%;
+    font-size: large;
+
 }
 
 .viewDaysBody {
@@ -88,12 +90,22 @@
     width: 50%;
     display: flex;
     flex-direction: column;
-    padding: 2%;
+    padding: 1%;
+    text-align: center;
+
+}
+
+.viewDaysItemDiv{
+    width: 100%;
+    height: 10%;
+    margin-bottom: 10%;
+}
+
+.viewDaysItemDiv .checkbox {
+  width: 90%;
 }
 .viewDayBodyInput {
-    border-left: solid var(--text) 2px;
-    border-top: solid var(--text) 2px;
-    border-bottom: solid var(--text) 2px;
+    overflow-y: scroll;
 }
 
 .viewDayBodyInput label {
@@ -101,8 +113,15 @@
 }
 
 .viewDaysBodyResults{
-    background-color: var(--unique);
-    align-items: center;
-    border-top-right-radius: 15px ;
-    border-bottom-right-radius: 15px ;
+   background-color: var(--unique);
+   border-radius: 15px;
+   overflow-y: scroll;
+}
+
+.noVacyDayMessage {
+    width: 90%;
+    height: fit-content;
+    margin: auto;
+    text-align: center;
+    margin-top: 20vh;
 }

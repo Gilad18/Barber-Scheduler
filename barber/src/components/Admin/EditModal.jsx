@@ -4,6 +4,7 @@ import { DATABASE, avaiabilty, closingHoursFriday ,theTypes } from "../utility";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment";
+import { Button, Icon } from "semantic-ui-react";
 import "./admin.css";
 
 
@@ -107,7 +108,10 @@ export default function EditModal({ modalContent, givenDate }) {
 
   return (
     <div className="modalBody">
-      <button onClick={() => setEditMode(true)}>Edit Reservation</button>
+            <Button icon onClick={() => setEditMode(true)}>
+                <Icon name="edit" /> Edit Resevation
+              </Button>
+      {/* <button className="modalBodyButton" onClick={() => setEditMode(true)}>Edit Reservation</button> */}
       <h2>{givenDate}</h2>
       <h2>{content.hour}</h2>
       <h2>{content.name}</h2>
@@ -130,7 +134,36 @@ export default function EditModal({ modalContent, givenDate }) {
       )}
       {editMode && (
         <div className="editModeSec">
-          <h2 onClick={()=>setEditMode(false)} style={{textAlign:'left'}}>X</h2>
+          <div className="closeEditModalDiv">
+          <i onClick={()=>setEditMode(false)} className="big close icon" />
+          </div>
+          <div className="calnderDiv">
+          <h3> {content.date}</h3>
+          <Calendar
+            onChange={onChange}
+            value={value}
+            calendarType="Hebrew"
+            defaultView="month"
+            maxDetail="month"
+            onClickDay={(e) => handlePickedDay(e)}
+            tileDisabled={({ date }) =>
+              date.getDay() === 1 || date.getDay() === 6
+            }
+          />
+          </div>
+          <select
+            name="hour"
+            onChange={(e) => handleChangeInput(e, "hour")}
+            value={content.hour}
+          >
+            {availableHours.map((item, index) => {
+              return (
+                <option value={item} key={index}>
+                  {item}
+                </option>
+              );
+            })}
+          </select>
           <input
             type="text"
             value={content.name}
@@ -147,31 +180,6 @@ export default function EditModal({ modalContent, givenDate }) {
                 return <option key={index} value={item.name}>{item.name}</option>
               })
             }
-          </select>
-          {content.date}
-          <Calendar
-            onChange={onChange}
-            value={value}
-            calendarType="Hebrew"
-            defaultView="month"
-            maxDetail="month"
-            onClickDay={(e) => handlePickedDay(e)}
-            tileDisabled={({ date }) =>
-              date.getDay() === 1 || date.getDay() === 6
-            }
-          />
-          <select
-            name="hour"
-            onChange={(e) => handleChangeInput(e, "hour")}
-            value={content.hour}
-          >
-            {availableHours.map((item, index) => {
-              return (
-                <option value={item} key={index}>
-                  {item}
-                </option>
-              );
-            })}
           </select>
           <button className={`ui primary button`} onClick={handleEdit}>
             Edit Reservation

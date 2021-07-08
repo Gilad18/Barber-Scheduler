@@ -15,9 +15,12 @@ export default function CustomDate() {
     }
 
     return (
+        <>
+        <div className="custoomDateHeader">
+        <Button />
+         <h4 style={{color:'var(--text', textAlign:'center'}}>Choose a specific date and view the schedule</h4>
+        </div>
         <div className="customDateSec">
-            <Button />
-              Show a custom date schedule
             <div className="calnderDiv">
                 <Calendar
                     onChange={onChange}
@@ -37,5 +40,7 @@ export default function CustomDate() {
             }
             
         </div>
+        </>
+
     )
 }

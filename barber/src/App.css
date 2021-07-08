@@ -47,6 +47,10 @@ input:focus {
   outline: none;
 }
 
+span {
+  color: var(--unique);
+}
+
 button:focus {
   outline: none;
 }

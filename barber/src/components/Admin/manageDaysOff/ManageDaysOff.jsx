@@ -9,7 +9,7 @@ export default function ManageDaysOff() {
   const [value, onChange] = useState(new Date());
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const [infoOpen , setInfoOpen] = useState(false)
+  const [infoOpen, setInfoOpen] = useState(false);
 
   const setDaysOff = async () => {
     if (!value[0] || !value[1]) {
@@ -40,7 +40,7 @@ export default function ManageDaysOff() {
       setLoading(false);
     } catch (error) {
       console.log(error);
-      setLoading(false);
+      setLoading(false); // show the error message text
     }
   };
 
@@ -48,22 +48,25 @@ export default function ManageDaysOff() {
     <div className="manageDaysOffSec">
       {infoOpen && (
         <div className="infoDiv">
+          <p style={{ textAlign: "center" }}>Taking a Break? </p>
+          <p style={{ textAlign: "center" }}>You surly deserve it!</p>
           <p>
-            Here you can set your vacation days, pick the days so they will
-            close for booking
+            Here you can set your vacation days, pick the days you need so they
+            will be close for client's booking.
           </p>
-
           <p>
-            You will be abale to set these days only if there are no slots
+            You will be able to set these days only if there are no slots
             reserverd alreday!
           </p>
-
-          <p>Enjoy your time :)</p>
+          <p style={{ textAlign: "center" }}>Enjoy your time :)</p>
         </div>
       )}
       <div className="daysOffActionSec">
         <div className="daysoffSecHeader">
-          <i className="big info circle icon" onClick={()=>setInfoOpen(!infoOpen)}></i>
+          <i
+            className="big info circle icon"
+            onClick={() => setInfoOpen(!infoOpen)}
+          ></i>
           <h2 style={{ textAlign: "center" }}>Set Your Days Off :</h2>
         </div>
         <div className="calnderDiv">

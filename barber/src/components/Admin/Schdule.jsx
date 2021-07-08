@@ -7,6 +7,7 @@ import {
   daysOfTheWeek,
   holidays,
 } from "../utility";
+import { getavailabilty } from "../functionUntilty";
 import Modal from "./ReserveSlotModal";
 import EditModal from "./EditModal";
 import axios from "axios";
@@ -28,10 +29,15 @@ export default function Scheudle({ givenDate }) {
   const [isHoliday, setisHoliday] = useState(false);
   const [isdayOff, setisDayOff] = useState(false);
   const [closeDayMoadl, setModalisOpen] = useState(false);
+  const [availabilty, setAvaiabily] = useState(null);
 
   useEffect(() => {
     const serach = async () => {
-      if ( holidays.find((item)=> item.date === moment(theDate).format('DD-MM-YYYY'))) {
+      if (
+        holidays.find(
+          (item) => item.date === moment(theDate).format("DD-MM-YYYY")
+        )
+      ) {
         return setisHoliday(true);
       }
       if (
@@ -54,6 +60,7 @@ export default function Scheudle({ givenDate }) {
           }
         }
       }
+      setAvaiabily(getavailabilty(theDate, theSlots.length));
       if (new Date(givenDate).getDay() === 5) {
         let shortDay = workingHours.filter(
           (item) => !closingHoursFriday.includes(item.hour)
@@ -79,29 +86,31 @@ export default function Scheudle({ givenDate }) {
     isClosedForBooking();
   }, [givenDate, closeDayMoadl]);
 
-  const handleSlotClick = (item, e) => {
-    if (e.target.className.includes("reserved")) {
-      setModalContent(item);
-      setOpenEditReservation(true);
-      return console.log("booked slot, want to edit or delete?");
-    }
+  const handleNewReservation = (item) => {
     setModalContent(item);
     setOpenModal(true);
   };
 
+  const handleEdirResrvation = (item) => {
+    setModalContent(item);
+    setOpenEditReservation(true);
+  };
+
   const getHolidayName = () => {
-    let requested = holidays.find((item)=>item.date===moment(givenDate).format('DD-MM-YYYY'))
-    if(requested.name){
-      return requested.name
+    let requested = holidays.find(
+      (item) => item.date === moment(givenDate).format("DD-MM-YYYY")
+    );
+    if (requested.name) {
+      return requested.name;
     }
-  }
+  };
 
   return (
     <div className={`adminPage`}>
       {selfBookClose && (
         <React.Fragment>
           <p className="headingMessgaeSchedule">
-            * This day is close for self-booking
+            <i className="lock icon"></i> Closed for self-booking
           </p>
         </React.Fragment>
       )}
@@ -109,49 +118,68 @@ export default function Scheudle({ givenDate }) {
         daysOfTheWeek[new Date(givenDate).getDay()]
       }`}</h2>
       {isHoliday || isdayOff ? (
-        <><h2>No Work Today</h2>
-        { isHoliday && <h2>Holiday : {getHolidayName()}</h2>}</>
+        <>
+          <h2>No Work Today</h2>
+          {isHoliday && <h2>Holiday : {getHolidayName()}</h2>}
+        </>
       ) : (
         <>
+          {avaiabilty !== null && (
+            <h3 style={{ textAlign: "center" }}>
+              Capacity: <span>{availabilty} </span>
+            </h3>
+          )}
           {todaySlots.map((item, index) => {
             return (
               <div
                 className={`slotHour ${item.name ? "reserved" : ""}`}
-                onClick={(e) => handleSlotClick(item, e)}
                 key={index}
               >
                 {item.hour}
                 {item.name && <p>{item.name}</p>}
                 {item.threat && <p>{item.threat}</p>}
+                {item.name ? (
+                  <i
+                    className="edit icon"
+                    onClick={() => handleEdirResrvation(item)}
+                  />
+                ) : (
+                  <i
+                    className="add circle icon"
+                    style={{ float: "right" }}
+                    onClick={() => handleNewReservation(item)}
+                  />
+                )}
               </div>
             );
           })}
           {selfBookClose ? (
             <div className="ModifySelfBookingBtn">
-                <Button as="div" labelPosition="left" onClick={() => setModalisOpen(true)}>
+              <Button
+                as="div"
+                labelPosition="left"
+                onClick={() => setModalisOpen(true)}
+              >
                 <Button color="green">
                   <Icon name="lock open" />
                 </Button>
-                <Label as="a" basic color="black" pointing="left">
-                Enable Self Booking
+                <Label as="a" basic color="black">
+                  Enable Self Booking
                 </Label>
               </Button>
-              {/* <Button
-                content="Open Day For Self Booking"
-                icon="lock open"
-                color="green"
-                labelPosition="left"
-                onClick={() => setModalisOpen(true)}
-              /> */}
             </div>
           ) : (
             <div className="ModifySelfBookingBtn">
-              <Button as="div" labelPosition="left" onClick={() => setModalisOpen(true)}>
+              <Button
+                as="div"
+                labelPosition="left"
+                onClick={() => setModalisOpen(true)}
+              >
                 <Button color="red">
                   <Icon name="lock" />
                 </Button>
-                <Label as="a" basic color="red" pointing="left">
-                Disable Self Booking
+                <Label as="a" basic color="red">
+                  Disable Self Booking
                 </Label>
               </Button>
             </div>

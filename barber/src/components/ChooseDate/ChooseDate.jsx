@@ -29,7 +29,7 @@ const ChooseDate = () => {
   getmyDaysOff();
 
   const [date, setDate] = useState(new Date());
-  const [hour, setHour] = useState([]);
+  const [hour, setHour] = useState(null);
   const [availableHours, setAvailableHours] = useState(avaiabilty);
   const [hourPop, setPopHours] = useState(false);
   const [errorMSG, setErrorMSG] = useState("");
@@ -38,11 +38,10 @@ const ChooseDate = () => {
   const handleSubmit = () => {
     setErrorMSG("");
     if (date !== null && hour !== null) {
-     const thePickedDay = date.toLocaleDateString("en-GB").replaceAll('/','-')
+    //  const thePickedDay = date.toLocaleDateString("en-GB").replaceAll('/','-')
       dispatch(
         addDate({
           date: moment(date).format("LL"),
-          // thePickedDay,
           hour
         })
       );
@@ -57,19 +56,16 @@ const ChooseDate = () => {
   };
 
   const handlePickedDay = async (e) => {
+    setErrorMSG("")
+    setHour(null)
     setLoadingHours(true);
     setPopHours(true);
-    // const theDate =  e.toLocaleDateString("en-GB").replaceAll('/','-');
     const theDate = moment(e).format("LL");
-
-    // const theDate = e.toDateString()
-    console.log(theDate)
     try {
       const bookedHours = await axios({
         method: "get",
         url: `${DATABASE}/todaySlot/${theDate}`,
       });
-      console.log(bookedHours)
       let theHoursObjects = bookedHours.data.theDaySlots;
       let reserved = [];
       theHoursObjects.forEach((item) => reserved.push(item.hour));
@@ -77,7 +73,6 @@ const ChooseDate = () => {
       let avaiableHours = allHoursArray.filter(
         (item) => !reserved.includes(item)
       );
-      console.log(avaiableHours)
       setAvailableHours(avaiableHours);
       if (e.toLocaleDateString("en-GB") === new Date().toLocaleDateString("en-GB")){
         let timeNow = new Date().getHours();
@@ -94,7 +89,6 @@ const ChooseDate = () => {
       }
       setLoadingHours(false);
     } catch (err) {
-      console.log(err);
       setLoadingHours(false);
     }
   };
@@ -116,7 +110,6 @@ const ChooseDate = () => {
           maxDetail="month"
           tileDisabled={({ date }) =>
             offDays.includes(moment(date).format("DD-MM-YYYY")) ||
-            // offDays.includes(date.toLocaleDateString("en-GB")) ||
             date.getDay() === 1 ||
             date.getDay() === 6
           }
@@ -158,8 +151,8 @@ const ChooseDate = () => {
         )}
       </div>
       <div className="currentfooter">
-        <Button onClick={handleSubmit} text="Next"/>
         <h3 style={{ color: "red" }}>{errorMSG}</h3>
+        <Button onClick={handleSubmit} text="Next"/>
       </div>
     </div>
   );

@@ -54,7 +54,7 @@ export const theTypes = [
 ];
 
 export const adminActios = [
-  { name: "Upcoming 10 Days", page: "/admin/week" },
+  { name: "Upcoming Schedule", page: "/admin/week" },
   { name: "Custom Date View", page: "/admin/customdate" },
   { name: "Manage Days Off", page: "/admin/mangedaysoff" },
 ];

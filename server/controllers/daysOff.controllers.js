@@ -68,11 +68,23 @@ const setVacationDates = async (req, res) => {
     }
 }
 
+const revertVacationDay = async (req,res) => {
+    const day = req.body.days
+    try {
+        await daysOff.updateMany({ $pull: { vacation: day } })
+        res.status(200).json({ success: 'vacations dates updated succesffuly'})
+    }
+    catch (error) {
+        res.status(400).json({ error })
+    }
+}
+
 
 module.exports = {
     closeDayForBooking,
     getDaysOff,
     openDayForBooking,
     isClosedForBooking,
-    setVacationDates
+    setVacationDates,
+    revertVacationDay
 }

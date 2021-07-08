@@ -38,6 +38,9 @@ router.post('/newslot' , (req,res) => {
 .post('/daysoff/setvacationdates' , (req,res) => {
     daysOffControllers.setVacationDates(req,res)
 })
+.delete('/daysoff/revertVacationDay' , (req,res) => {
+    daysOffControllers.revertVacationDay(req,res)
+})
 
 
 module.exports = router;

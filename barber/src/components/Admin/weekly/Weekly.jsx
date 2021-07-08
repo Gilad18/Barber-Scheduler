@@ -3,10 +3,9 @@ import Schedule from "../Schdule";
 import "./weekly.css";
 import {
   daysOfTheWeek,
-  closingHoursFriday,
-  avaiabilty,
   DATABASE,
 } from "../../utility";
+import { getavailabilty } from "../../functionUntilty";
 import axios from "axios";
 import { Dimmer, Loader} from 'semantic-ui-react'
 
@@ -24,19 +23,6 @@ export default function Weekly() {
     };
     getWeekly();
   }, []);
-
-  const getavailabilty = (theDay, slots) => {
-    if (new Date(theDay).getDay() === 1 || new Date(theDay).getDay() === 6) {
-      return "OFF";
-    }
-    if (new Date(theDay).getDay() === 5) {
-      let theAvailabilty =
-        slots / [avaiabilty.length - closingHoursFriday.length];
-      return `${(theAvailabilty * 100).toFixed(0)}%`;
-    }
-    let theAvailabilty = slots / avaiabilty.length;
-    return `${(theAvailabilty * 100).toFixed(0)}%`;
-  };
 
   const [didChooseDay, setDidChooseDay] = useState(false);
 

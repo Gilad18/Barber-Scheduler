@@ -1,6 +1,6 @@
-import { DATABASE } from "./utility";
+import { DATABASE , avaiabilty , closingHoursFriday , holidays} from "./utility";
 import axios from 'axios'
-import {holidays} from './utility'
+
 
 export const getDaysOff = async () => {            //getting all days off and store in localstorage
     const daysOffForBookings = await axios.get(
@@ -14,3 +14,16 @@ export const getDaysOff = async () => {            //getting all days off and st
         daysOffForBookings.data.mydaysOff[0].vacation)     
     localStorage.setItem('daysoff', allOffDays)
 }
+
+export const getavailabilty = (theDay, slots) => {
+    if (new Date(theDay).getDay() === 1 || new Date(theDay).getDay() === 6) {
+      return "OFF";
+    }
+    if (new Date(theDay).getDay() === 5) {
+      let theAvailabilty =
+        slots / [avaiabilty.length - closingHoursFriday.length];
+      return `${(theAvailabilty * 100).toFixed(0)}%`;
+    }
+    let theAvailabilty = slots / avaiabilty.length;
+    return `${(theAvailabilty * 100).toFixed(0)}%`;
+  };
