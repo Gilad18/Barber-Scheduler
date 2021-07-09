@@ -24,16 +24,12 @@ const createNewSlot = async (req, res) => {
 
     await newSlot.save();
     const bookedSlots = await slots.find({ date: date }, { hour: 1 });
-    if (bookedSlots.length === utility.avaiabilty.length ||
-       [bookedSlots.length === utility.avaiabilty.length - utility.closingHoursFriday.length &&
-          new Date(date).getDay() === 5])
+    if (bookedSlots.length === utility.avaiabilty.length)
     {
       const theday = moment(date).format("DD-MM-YYYY");
       await daysoff.updateOne({ $push: { fullyBooked: theday } });
     }
-    res
-      .status(200)
-      .json({ succes: "Your slot is booked succesfully!", newSlot });
+    res.status(200).json({ succes: "Your slot is booked succesfully!", newSlot });
   } catch (error) {
     res.status(400).json({ error });
   }

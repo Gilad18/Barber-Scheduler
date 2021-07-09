@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { nextPage } from '../../features/actions'
 import {getDaysOff} from '../functionUntilty'
 import MenuBar from './MenuBar'
+import ButtonF from '../Assets/ButtonF'
 
 const Welcome = () => {
 
@@ -37,9 +38,11 @@ const Welcome = () => {
                 <div className="logoDiv"></div>
             </div>
             <div className="currentfooter">
-                <button onClick={handleClick}
-                    className="ui primary button ">Book Your Appointment</button>
+                {/* <button onClick={handleClick}
+                    className="ui primary button ">Book Your Appointment</button> */}
+                    <ButtonF onClick={handleClick} text="Book Your Appointment"/>
             </div>
+            
             {
                 menuBarOpen && <> <MenuBar/> </>
             }

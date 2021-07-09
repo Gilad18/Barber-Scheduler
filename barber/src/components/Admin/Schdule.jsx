@@ -107,16 +107,16 @@ export default function Scheudle({ givenDate }) {
 
   return (
     <div className={`adminPage`}>
-      {selfBookClose && (
+      <h2>{`${givenDate}   /  ${
+        daysOfTheWeek[new Date(givenDate).getDay()]
+      }`}</h2>
+           {selfBookClose && (
         <React.Fragment>
           <p className="headingMessgaeSchedule">
             <i className="lock icon"></i> Closed for self-booking
           </p>
         </React.Fragment>
       )}
-      <h2>{`${givenDate}   /  ${
-        daysOfTheWeek[new Date(givenDate).getDay()]
-      }`}</h2>
       {isHoliday || isdayOff ? (
         <>
           <h2>No Work Today</h2>

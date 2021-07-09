@@ -25,8 +25,6 @@
     align-items: center;
     justify-content: center;
     background-color: black;
-    /* box-shadow: 0px 0px 4px 0px white;
-    box-shadow: 4px 1px 0px 0px grey; */
     border: 2px solid white;
     opacity: 0.8;
     padding: 5%;
@@ -82,13 +80,7 @@ input:focus {
     opacity: 1;
     border-color:var(--unique) ;
 }
-.chooseType .currentfooter button {
-    width: 50%;
-    height: 4rem;
-    background-color: var(--unique) !important;
-    color: black !important;
-    font-size: large;
-}
+
 
 .phoneErrorMSG{
     color: rgb(209, 52, 52);

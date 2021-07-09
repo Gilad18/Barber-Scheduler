@@ -10,7 +10,7 @@ import "./chooseDate.css";
 
 import { useDispatch } from "react-redux";
 import { addDate, nextPage } from "../../features/actions";
-import Button from "../Assets/Button";
+import ButtonF from "../Assets/ButtonF";
 
 const ChooseDate = () => {
   const history = useHistory();
@@ -151,8 +151,8 @@ const ChooseDate = () => {
         )}
       </div>
       <div className="currentfooter">
+        <ButtonF onClick={handleSubmit} text="Next"/>
         <h3 style={{ color: "red" }}>{errorMSG}</h3>
-        <Button onClick={handleSubmit} text="Next"/>
       </div>
     </div>
   );

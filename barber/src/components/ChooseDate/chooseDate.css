@@ -87,14 +87,6 @@
  }
 
 
-.chooseDate .currentfooter button {
-    width: 50%;
-    height: 4rem;
-    background-color: var(--unique) !important;
-    color: black !important;
-    font-size: large;
-}
-
 .noSlotsText {
     text-align: center;
     color: var(--assist);

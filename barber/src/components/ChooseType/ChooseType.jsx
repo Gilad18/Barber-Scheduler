@@ -4,7 +4,7 @@ import './chooseType.css'
 import { theTypes ,  } from '../utility'
 import { useDispatch, useSelector } from 'react-redux'
 import { addSlot, addDetials, nextPage } from '../../features/actions'
-import Button from '../Assets/Button'
+import ButtonF from '../Assets/ButtonF'
 const validator = require('validator');
 
 const ChooseType = () => {
@@ -26,6 +26,7 @@ const ChooseType = () => {
         }))
         setErrorMSG('')
     }
+
 
     useEffect(() => {
         setPhoneErr(false)
@@ -70,12 +71,13 @@ const ChooseType = () => {
             <div className="secondBody">
                 <div className="inputDiv">
                     <input type="text" name="yourName" required placeholder="Enter your name here..."
-                        onChange={e => setName(e.target.value)}></input>
+                        onChange={e => setName(e.target.value)}
+                        value={name}></input>
                 </div>
                 <div className="inputDiv">
                     
                     <input type="number" name="phone" required placeholder="Can I have your number?"
-                        onChange={(e) => handleSetNumber(e)}></input>
+                        onChange={(e) => handleSetNumber(e)} value={phone}></input>
                        {
                         validator.isMobilePhone(phone, 'he-IL') &&  <i className="large thumbs up icon"></i>
                     }
@@ -91,7 +93,7 @@ const ChooseType = () => {
                 })}
             </div>
             <div className="currentfooter">
-                <Button onClick={handleNEXT} text='Next'/>
+                <ButtonF onClick={handleNEXT} text='Next'/>
                 <h3 style={{ color: 'red' }}>{errorMSG}</h3>
             </div>
         </div>

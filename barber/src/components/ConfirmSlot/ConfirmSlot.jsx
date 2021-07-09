@@ -6,12 +6,13 @@ import { useState } from "react";
 import { disable } from "../../features/actions";
 import { DATABASE, daysOfTheWeek } from "../utility";
 import { Button, Icon } from "semantic-ui-react";
+import { useHistory , Link } from 'react-router-dom'
+import ButtonF from "../Assets/ButtonF";
 
 const ConfirmSlot = () => {
+  const history = useHistory()
   const mySlot = useSelector((state) => state);
   const dispatch = useDispatch();
-
-  console.log(mySlot);
 
   const [succes, setSucces] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -56,13 +57,21 @@ const ConfirmSlot = () => {
     }
   };
 
+  const handleLogOut = () => {
+    history.push('/')
+  }
+
   return (
     <div className="currentPage confirmSlot">
       <div className="currentHeader">
         {!succes ? (
           <h3>{`Review & Confirm`}</h3>
         ) : (
-          <h2 className="succcesMsgConfirm">Reservation is booked! </h2>
+          <div className="logOutIconDiv">
+            <Link to={"/"}>
+            <i className="big log out icon" />
+            </Link>
+          </div>
         )}
       </div>
       <div className="currentBody">
@@ -84,26 +93,29 @@ const ConfirmSlot = () => {
               <h3>{mySlot.slot.threat}</h3>
               <h3>{mySlot.slot.price} ILS</h3>
             </div>
-            <div className="modifyBeforeConfirm">
-              <Button icon>
-                <Icon name="edit" />
+            {
+              !succes && 
+              <div className="modifyBeforeConfirm">
+                <Link to={'/user/what/1'}>
+                <Button icon>
+                <Icon name="edit" /> Change
               </Button>
+                </Link>
+            
             </div>
+            }
           </div>
         </div>
       </div>
       <div className="currentfooter">
-        {!succes && (
+        {!succes ? 
           <React.Fragment>
-            <button
-              className={`ui primary button ${loading ? "loading" : ""}`}
-              onClick={handleConfirm}
-            >
-              Confirm
-            </button>
+            <ButtonF onClick={handleConfirm} text="Confirm" loading={loading}/>
             <p style={{ color: "red" }}>{erroeMessage}</p>
-          </React.Fragment>
-        )}
+          </React.Fragment> 
+          :
+          <h2 className="succcesMsgConfirm">Reservation is booked! </h2>
+        }
       </div>
     </div>
   );

@@ -29,7 +29,7 @@
 
 .currentBody {
   width: 100%;
-  height: 70vh;
+  height: 65vh;
   display: flex;
 
 }
@@ -41,6 +41,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.currentfooter button {
+  width: 50%;
+  height: 4rem;
+  background-color: var(--unique) !important;
+  color: black !important;
+  font-size: large !important;
 }
 
 input:focus {

@@ -13,17 +13,19 @@
 
 .daysOffActionSec {
     width: 100%;
-    height: 80vh;
+    height: 80vh;   
 }
 
 .pickedDaysOffs {
-    width: 90%;
-    margin: -3rem auto;
+    width: 100%;
 }
 
 .daysoffSecButton {
     display: flex;
+    flex-direction: column;
    justify-content: center;
+   align-items: center;
+   text-align: center;
    margin-top: 5rem;
 }
 .daysoffSecButton button {
@@ -125,3 +127,5 @@
     text-align: center;
     margin-top: 20vh;
 }
+
+

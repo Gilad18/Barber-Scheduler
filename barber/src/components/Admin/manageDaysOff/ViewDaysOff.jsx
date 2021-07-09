@@ -11,6 +11,10 @@ export default function ViewDaysOff() {
   const [loading, setLoading] = useState(false);
   const [vactionDays, setVacationDays] = useState([]);
   const [pickedDays, setPickedDays] = useState([]);
+  const [loader,setLoader] = useState(false)
+  const [message,setMessgae]=useState('')
+  const [refresh, setRefresh] = useState(null)
+  
 
   useEffect(() => {
     setLoading(true)
@@ -20,9 +24,10 @@ export default function ViewDaysOff() {
       setLoading(false)
     };
     search();
-  }, []);
+  }, [refresh]);
 
   const handleClick = (item) => {
+    setMessgae('')
     if (pickedDays.includes(item)) {
       let arrayInstance = [...pickedDays];
       let filtered = arrayInstance.filter((it) => it !== item);
@@ -32,6 +37,30 @@ export default function ViewDaysOff() {
     arrayInstance.push(item);
     setPickedDays(arrayInstance);
   };
+
+  const handleSubmit = async () => {
+    if(pickedDays.length<1) {
+      return setMessgae('No days were picked')
+    }
+    setLoader(true)
+    try {
+     const revertedDays =  await axios({
+       method:'Patch',
+        url:`http://localhost:3900/mybarber/api/daysoff/revertVacationDay`,
+        data:{days:pickedDays}
+      })
+      setLoader(false)
+      setMessgae(revertedDays.data.success)
+      setTimeout(() => {
+        setRefresh(true)
+        setPickedDays([])
+      }, 1000);
+    }
+   catch(err){
+     console.log(err)
+     setLoader(false)
+   }
+  }
 
   return (
     <div className="manageDaysOffSec">
@@ -69,12 +98,11 @@ export default function ViewDaysOff() {
           <>
             <div className="viewDaysBody">
               <div className="viewDayBodyInput">
-                <h3>Vacation Days:</h3>
+                <p>Vacation Days:</p>
                 {vactionDays.map((item, index) => {
                   return (
-                    <div className="viewDaysItemDiv">
+                    <div className="viewDaysItemDiv" key={index}>
                       <Checkbox
-                        key={index}
                         label={item}
                         onChange={() => handleClick(item)}
                       />
@@ -86,16 +114,18 @@ export default function ViewDaysOff() {
                 <h3 style={{ color: "var(--back)" }}>Picked Days:</h3>
                 {pickedDays.map((item, index) => {
                   return (
-                    <div className="viewDaysItemDiv">
-                      <h4 key={index}>{item}</h4>
+                    <div className="viewDaysItemDiv"  key={index}>
+                      <h4>{item}</h4>
                     </div>
                   );
                 })}
               </div>
             </div>
             <div className="daysoffSecButton">
+              <p>{message}</p>
               <button
-                className={`ui primary button ${loading ? "loading" : ""}`}
+                className={`ui primary button ${loader ? "loading" : ""}`}
+                onClick={handleSubmit}
               >
                 Set Days Back To Working Days
               </button>

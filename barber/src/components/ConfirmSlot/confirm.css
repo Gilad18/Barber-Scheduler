@@ -63,24 +63,19 @@
 .modifyBeforeConfirm{
     width: 5rem;
     height: 4rem;
-    position: absolute;
-    right: 0;
-    top: 5%;
+    position: relative;
+    bottom: 2rem;
+}
+
+.modifyBeforeConfirm button {
+    background-color: transparent !important;
+    color: var(--unique) !important;
 }
 
 .succes {
     opacity: 0.8;
 }
 
-.confirmSlot .currentfooter button {
-    width: 50%;
-    height: 4rem;
-    background-color: var(--unique)!important;
-    color: black !important;
-    font-size: large;
-    margin-top: 5%;
-    z-index: 20;
-}
 
 .confirmSlot .currentfooter h2 {
     margin-top: 10%;
@@ -89,5 +84,15 @@
 .succcesMsgConfirm {
     color: var(--unique);
     text-align: center;
-    transform: translateY(100%);
+}
+
+.logOutIconDiv {
+    float: right;
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+
+.confirmSlot .logOutIconDiv .icon {
+    color: var(--unique);
+    z-index: 100;
 }

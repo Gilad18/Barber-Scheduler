@@ -70,8 +70,9 @@ const setVacationDates = async (req, res) => {
 
 const revertVacationDay = async (req,res) => {
     const day = req.body.days
+    console.log(day)
     try {
-        await daysOff.updateMany({ $pull: { vacation: day } })
+        await daysOff.updateMany({ $pull: { vacation: {$in : day} } })
         res.status(200).json({ success: 'vacations dates updated succesffuly'})
     }
     catch (error) {
