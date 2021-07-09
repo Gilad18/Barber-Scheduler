@@ -34,11 +34,3 @@
     margin: 0;
 }
 
-.loaderWeekely {
-    width: 100%;
-    height: 100vh;
-    background-color: black;
-    color:white;
-    position: absolute;
-    top: 0;
-}

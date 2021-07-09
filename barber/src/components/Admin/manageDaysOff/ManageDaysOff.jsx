@@ -4,6 +4,7 @@ import Calendar from "react-calendar";
 import axios from "axios";
 import { DATABASE } from "../../utility";
 import moment from "moment";
+import ButtonF from "../../Assets/ButtonF";
 
 export default function ManageDaysOff() {
   const [value, onChange] = useState(new Date());
@@ -13,11 +14,11 @@ export default function ManageDaysOff() {
 
   const setDaysOff = async () => {
     if (!value[0] || !value[1]) {
-      return setMessage("please select start and end days"); // make it red error text
+      return setMessage("please select start and end days");
     }
     setLoading(true);
     setMessage("");
-    let thedays = []; //make sure the right format is pass using moment
+    let thedays = [];
     let nextDay = new Date(value[0]);
     thedays.push(moment(nextDay).format("DD-MM-YYYY"));
     while (
@@ -92,13 +93,9 @@ export default function ManageDaysOff() {
             </div>
           </div>
         </div>
-        <div className="daysoffSecButton">
-          <button
-            className={`ui primary button ${loading ? "loading" : ""}`}
-            onClick={setDaysOff}
-          >
-            Set Days Off
-          </button>
+        <div className="currentfooter">
+          <ButtonF onClick={setDaysOff} text="Set Days Off" loading={loading} />
+          <h3 style={{ color: "white" }}>{message}</h3>
         </div>
         <h3 className="daysoffmessage">{message}</h3>
       </div>

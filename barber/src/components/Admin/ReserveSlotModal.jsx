@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { theTypes , DATABASE } from '../utility'
 import axios from 'axios'
+import ButtonF from '../Assets/ButtonF'
 import './admin.css'
 
 export default function ReserveSlotModal({ modalContent, givenDate }) {
@@ -69,9 +70,9 @@ export default function ReserveSlotModal({ modalContent, givenDate }) {
                 succes ?
                     <h3 className="successMessage">Client was successfuly Booked!</h3>
                     :
-                    <button className={`ui primary button ${loading ? 'loading' : ''}`} onClick={handleConfirm} >
-                        Confirm Reservation
-            </button>
+                    <div className="currentfooter">
+                    <ButtonF onClick={handleConfirm} text="Confirm" loading={loading} />
+                  </div>
             }
 
         </div>

@@ -7,7 +7,8 @@ import {
 } from "../../utility";
 import { getavailabilty } from "../../functionUntilty";
 import axios from "axios";
-import { Dimmer, Loader} from 'semantic-ui-react'
+import Loader from "../../Assets/LoaderF";
+
 
 export default function Weekly() {
   const [loadingweekly, setloadingWeekly] = useState(false);
@@ -60,13 +61,7 @@ export default function Weekly() {
           </div>
         </div>
       )}
-      {loadingweekly && (
-        <div className="loaderWeekely">
-          <Dimmer active>
-            <Loader size='huge' indeterminate>Loading, Please wait</Loader>
-          </Dimmer>
-        </div>
-      )}
+      {loadingweekly && <Loader/>}
     </React.Fragment>
   );
 }

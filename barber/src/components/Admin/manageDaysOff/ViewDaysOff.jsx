@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./manageDaysOff.css";
 import axios from "axios";
 import { DATABASE } from "../../utility";
-import moment from "moment";
 import { Checkbox } from "semantic-ui-react";
-import { Dimmer, Loader} from 'semantic-ui-react'
+import LoaderF from "../../Assets/LoaderF";
+import ButtonF from "../../Assets/ButtonF";
+
+// need to replace loader and loading
+//sepreatee error message and succes message
 
 export default function ViewDaysOff() {
   const [infoOpen, setInfoOpen] = useState(false);
@@ -14,7 +17,6 @@ export default function ViewDaysOff() {
   const [loader,setLoader] = useState(false)
   const [message,setMessgae]=useState('')
   const [refresh, setRefresh] = useState(null)
-  
 
   useEffect(() => {
     setLoading(true)
@@ -46,7 +48,7 @@ export default function ViewDaysOff() {
     try {
      const revertedDays =  await axios({
        method:'Patch',
-        url:`http://localhost:3900/mybarber/api/daysoff/revertVacationDay`,
+        url:`${DATABASE}/daysoff/revertVacationDay`,
         data:{days:pickedDays}
       })
       setLoader(false)
@@ -64,15 +66,7 @@ export default function ViewDaysOff() {
 
   return (
     <div className="manageDaysOffSec">
-      {loading && (
-        <div className="loaderWeekely">
-          <Dimmer active>
-            <Loader size="huge" indeterminate>
-              Loading, Please wait
-            </Loader>
-          </Dimmer>
-        </div>
-      )}
+      {loading && <LoaderF/>}
       {infoOpen && (
         <div className="infoDiv">
           <p style={{ textAlign: "center" }}>Change in plans? </p>
@@ -121,14 +115,9 @@ export default function ViewDaysOff() {
                 })}
               </div>
             </div>
-            <div className="daysoffSecButton">
-              <p>{message}</p>
-              <button
-                className={`ui primary button ${loader ? "loading" : ""}`}
-                onClick={handleSubmit}
-              >
-                Set Days Back To Working Days
-              </button>
+            <div className="currentfooter">
+                <ButtonF onClick={handleSubmit} text='Confirm' loading={loader}/>
+                <h3 style={{ color: 'red' }}>{message}</h3>
             </div>
           </>
         ) : (

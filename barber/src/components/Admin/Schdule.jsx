@@ -15,6 +15,7 @@ import CloseDay from "./CloseDay";
 import OpenDay from "./OpenDay";
 import { Button, Icon, Label } from "semantic-ui-react";
 import moment from "moment";
+import LoaderF from "../Assets/LoaderF";
 
 export default function Scheudle({ givenDate }) {
   let workingHours = [];
@@ -30,6 +31,7 @@ export default function Scheudle({ givenDate }) {
   const [isdayOff, setisDayOff] = useState(false);
   const [closeDayMoadl, setModalisOpen] = useState(false);
   const [availabilty, setAvaiabily] = useState(null);
+  const [loading,setLoading] = useState(false)
 
   useEffect(() => {
     const serach = async () => {
@@ -48,6 +50,7 @@ export default function Scheudle({ givenDate }) {
       }
       setisHoliday(false);
       setisDayOff(false);
+      setLoading(true)
       const getSlots = await axios({
         method: "get",
         url: `${DATABASE}/schedule/${givenDate}`,
@@ -65,9 +68,11 @@ export default function Scheudle({ givenDate }) {
         let shortDay = workingHours.filter(
           (item) => !closingHoursFriday.includes(item.hour)
         );
+        setLoading(false)
         return setTodaySlots(shortDay);
       }
       setTodaySlots(workingHours);
+      setLoading(false)
     };
     serach();
   }, [givenDate, openModal, openEditReservation]);
@@ -222,6 +227,7 @@ export default function Scheudle({ givenDate }) {
           <EditModal modalContent={modalContent} givenDate={theDate} />
         </div>
       )}
+      {loading && <LoaderF/>}
     </div>
   );
 }

@@ -5,6 +5,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment";
 import { Button, Icon } from "semantic-ui-react";
+import ButtonF from "../Assets/ButtonF";
 import "./admin.css";
 
 
@@ -39,6 +40,7 @@ export default function EditModal({ modalContent, givenDate }) {
 
   const handleEdit = async () => {
     setMessage('')
+    setLoading(true);
     const { name, date, hour, price, threat, phone } = content;
     try {
       const editSlot = await axios({
@@ -54,8 +56,10 @@ export default function EditModal({ modalContent, givenDate }) {
         },
       });
       setMessage(editSlot.data.succes);
+      setLoading(false);
     } catch ( error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -181,10 +185,10 @@ export default function EditModal({ modalContent, givenDate }) {
               })
             }
           </select>
-          <button className={`ui primary button`} onClick={handleEdit}>
-            Edit Reservation
-          </button>
-          <h2>{message}</h2>
+          <div className="currentfooter">
+          <ButtonF onClick={handleEdit} text="Edit Reservation" loading={loading} />
+          <h3 style={{ color: "white" }}>{message}</h3>
+        </div>
         </div>
       )}
     </div>
