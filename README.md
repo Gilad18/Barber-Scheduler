@@ -2,21 +2,23 @@
 Local Barber Shop Appointments Scheduler
 
 # Overview
-My local barber told me he needs an online appointment scheduler for his clients to book their slots. So I build it from scratch :)
+My local barber told me he needs an online appointment scheduler for his clients to book their slots.
+The app should let clients quickly book a slot based on availability and Admin access to view and modify all the upcoming schedules.
+
 
 ## Project timeline 
 
-1.Setting up my environment with React and MongoDB Atlas Cluster, then deploy it with Heroku
-2.Design the Database structure and scheme with Mongoose
-3.Creating the API route and some basic REST methods
-4.State Management with Redux (not that needed but I wanted to practice it)
-5.UI layout and conssinty approch
-6.All the logic for the 3 Step appointment booking: details/date/confirm
-7.Building the Admin pages 
-8.Admin options : view/delete/edit appointment
-9.Close a day for booking by admin
-10.Vacation days setting by admin
-11.Hebrew holiday sync
+1. Setting up my environment with React and MongoDB Atlas Cluster, then deploy it with Heroku
+2. Design the Database structure and scheme with Mongoose
+3. Creating the API route and some basic REST methods
+4. State Management with Redux (not that needed but I wanted to practice it)
+5. UI layout and conssinty approch
+6. All the logic for the 3 Step appointment booking: details/date/confirm
+7. Building the Admin pages 
+8. Admin options : view/delete/edit appointment
+9. Close a day for booking by admin
+10. Vacation days setting by admin
+11. Hebrew holiday sync
 
 ## Technologies Used
 
