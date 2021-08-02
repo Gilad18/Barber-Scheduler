@@ -61,16 +61,16 @@
 }
 input , label {
     width: 90%;
-    color: white;
+    color: var(--text);
     font-size: large;
     text-align: left;
     font-weight: bolder;
 }
 
 .inputDiv input {
-    background-color: black;
+    background-color: var(--back);
     opacity: 0.9;
-    border: 2px solid white;
+    border: 2px solid var(--text);
     min-height: 40%;
     border-radius: 10px;
     padding: 3%;

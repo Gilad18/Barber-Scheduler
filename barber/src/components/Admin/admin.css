@@ -206,7 +206,7 @@
 }
 
 .editModeSec select option {
-    background-color: black;
+    background-color: var(--back);
     color: var(--unique);
 }
 

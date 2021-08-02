@@ -81,7 +81,7 @@ const ConfirmSlot = () => {
               <h1>{mySlot.slot.details.name}</h1>
             </div>
             <div className="confirmItemDate">
-              <h2>Sunday</h2>
+              <h2>{daysOfTheWeek[new Date(mySlot.slot.date.date).getDay()]}</h2>
             </div>
             <div className="confirmItemDay">
               <h2>{mySlot.slot.date.date}</h2>
