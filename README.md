@@ -6,6 +6,9 @@ My local barber told me he needs an online appointment scheduler for his clients
 The app should let clients quickly book a slot based on availability and Admin access to view and modify all the upcoming schedules.
 
 
+https://user-images.githubusercontent.com/77917272/128152332-56d2b22b-b3be-4a7b-bf39-1d3c997284e2.mp4
+
+
 ## Project timeline 
 
 1. Setting up my environment with React and MongoDB Atlas Cluster, then deploy it with Heroku
